@@ -109,4 +109,49 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0)';
         });
     });
+    
+    // Login Popup Logic
+    const loginBtns = document.querySelectorAll('.login-btn');
+    const loginPopup = document.getElementById('login-popup');
+    const closeLoginPopup = document.getElementById('close-login-popup');
+    const roleTabs = document.querySelectorAll('.role-tab');
+    const forms = {
+        manager: document.getElementById('login-form-manager'),
+        parent: document.getElementById('login-form-parent'),
+        student: document.getElementById('login-form-student')
+    };
+
+    loginBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginPopup.classList.remove('hidden');
+        });
+    });
+    if (closeLoginPopup) {
+        closeLoginPopup.addEventListener('click', function() {
+            loginPopup.classList.add('hidden');
+        });
+    }
+    // Đóng popup khi click ngoài nội dung
+    loginPopup && loginPopup.addEventListener('click', function(e) {
+        if (e.target === loginPopup) loginPopup.classList.add('hidden');
+    });
+    // Chuyển tab vai trò
+    roleTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            roleTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            Object.values(forms).forEach(f => f.classList.add('hidden'));
+            const role = tab.getAttribute('data-role');
+            forms[role].classList.remove('hidden');
+        });
+    });
+    // Ngăn reload khi submit form
+    Object.values(forms).forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Đăng nhập thành công (demo)!');
+            loginPopup.classList.add('hidden');
+        });
+    });
 }); 
