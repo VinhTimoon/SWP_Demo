@@ -1558,3 +1558,103 @@ footer {
     margin-bottom: 18px;
   }
 }
+
+/* --- Newsletter Modern Section --- */
+.newsletter {
+  background: linear-gradient(120deg, #e6f0ff 60%, #f0e6ff 100%);
+  padding: 70px 0 70px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.newsletter-card {
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 4px 24px 0 rgba(44,62,80,0.10);
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 48px 36px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.newsletter-icon {
+  font-size: 3.2rem;
+  color: #3b82f6;
+  background: #e6f0ff;
+  border-radius: 50%;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px 0 rgba(44,62,80,0.10);
+}
+.newsletter-card h2 {
+  color: #0f3c78;
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.newsletter-sub {
+  color: #444;
+  font-size: 1.08rem;
+  margin-bottom: 22px;
+}
+.newsletter-form {
+  display: flex;
+  width: 100%;
+  gap: 0;
+  margin-bottom: 16px;
+}
+.newsletter-form input[type="email"] {
+  flex: 1 1 0;
+  padding: 14px 18px;
+  border-radius: 24px 0 0 24px;
+  border: 1.5px solid #cce0ff;
+  font-size: 1.08rem;
+  outline: none;
+  background: #f8f9fa;
+  transition: border 0.2s;
+}
+.newsletter-form input[type="email"]:focus {
+  border: 1.5px solid #3b82f6;
+}
+.newsletter-form button[type="submit"] {
+  padding: 14px 32px;
+  border-radius: 0 24px 24px 0;
+  border: none;
+  background: #3b82f6;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.08rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+}
+.newsletter-form button[type="submit"]:hover {
+  background: #0f3c78;
+  transform: translateY(-2px) scale(1.04);
+}
+.newsletter-note {
+  color: #888;
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+@media (max-width: 600px) {
+  .newsletter-card {
+    padding: 24px 6px 18px 6px;
+    border-radius: 16px;
+  }
+  .newsletter-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .newsletter-form input[type="email"],
+  .newsletter-form button[type="submit"] {
+    border-radius: 24px;
+    width: 100%;
+  }
+}
