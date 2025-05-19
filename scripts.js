@@ -150,8 +150,8 @@ document.addEventListener('DOMContentLoaded', function() {
     Object.values(forms).forEach(form => {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Đăng nhập thành công (demo)!');
-            loginPopup.classList.add('hidden');
+            // Redirect to dashboard after successful login
+            window.location.href = 'dashboard.html';
         });
     });
-}); 
+});
