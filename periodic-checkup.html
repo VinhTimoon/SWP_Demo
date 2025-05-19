@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch Khám Định Kỳ - SchoolHealth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/periodic-checkup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <div><i class="fas fa-map-marker-alt"></i>Đại học FPT Campus HCM</div>
+                    <div><i class="fas fa-phone-alt"></i> +84 123 999 9999</div>
+                    <div><i class="fas fa-envelope"></i> fptDaiGaKu@schoolhealthsystem.com</div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="images/imagez/LOGO_Health.png" alt="SchoolHealth Logo">
+                    <span>SchoolHealth</span>
+                </a>
+                <div class="nav-links">
+                    <a href="dashboard.html">Bảng điều khiển</a>
+                    <a href="news.html">Tin tức</a>
+                    <a href="partners.html">Đối tác</a>
+                    <a href="contact.html">Liên hệ</a>
+                </div>
+                <div class="user-profile">
+                    <span>Y tá học đường</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <button class="logout-btn">Đăng xuất</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="dashboard.html">Bảng điều khiển</a></li>
+                <li>Lịch khám định kỳ</li>
+            </ul>
+            <h1>Lịch Khám Định Kỳ</h1>
+            <p>Quản lý và theo dõi lịch khám sức khỏe định kỳ cho học sinh</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="dashboard-main">
+        <div class="container">
+            <!-- Schedule Form -->
+            <div class="checkup-form">
+                <h2>Tạo lịch khám mới</h2>
+                <form id="schedule-form" class="schedule-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkup-type">Loại khám</label>
+                            <select id="checkup-type" required>
+                                <option value="">-- Chọn loại khám --</option>
+                                <option value="general">Khám tổng quát</option>
+                                <option value="dental">Khám răng miệng</option>
+                                <option value="vision">Khám mắt</option>
+                                <option value="vaccination">Tiêm chủng</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="target-class">Lớp</label>
+                            <select id="target-class" required>
+                                <option value="">-- Chọn lớp --</option>
+                                <option value="all">Tất cả các lớp</option>
+                                <option value="1A">Lớp 1A</option>
+                                <option value="1B">Lớp 1B</option>
+                                <option value="2A">Lớp 2A</option>
+                                <option value="2B">Lớp 2B</option>
+                                <!-- Thêm các lớp khác -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkup-date">Ngày khám</label>
+                            <input type="date" id="checkup-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkup-time">Thời gian</label>
+                            <input type="time" id="checkup-time" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Địa điểm</label>
+                        <input type="text" id="location" required placeholder="Nhập địa điểm khám...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Mô tả</label>
+                        <textarea id="description" required placeholder="Nhập mô tả chi tiết về buổi khám..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Ghi chú</label>
+                        <textarea id="notes" placeholder="Thông tin bổ sung nếu cần..."></textarea>
+                    </div>
+
+                    <div class="actions">
+                        <button type="button" class="btn btn-secondary" id="cancel-btn">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Tạo lịch khám</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Schedule List -->
+            <div class="schedule-list">
+                <div class="section-header">
+                    <h2>Lịch khám sắp tới</h2>
+                    <div class="filter-options">
+                        <select id="filter-type">
+                            <option value="all">Tất cả loại khám</option>
+                            <option value="general">Khám tổng quát</option>
+                            <option value="dental">Khám răng miệng</option>
+                            <option value="vision">Khám mắt</option>
+                            <option value="vaccination">Tiêm chủng</option>
+                        </select>
+                        <select id="filter-status">
+                            <option value="all">Tất cả trạng thái</option>
+                            <option value="upcoming">Sắp tới</option>
+                            <option value="completed">Đã hoàn thành</option>
+                            <option value="cancelled">Đã hủy</option>
+                        </select>
+                    </div>
+                </div>
+
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Ngày giờ</th>
+                            <th>Loại khám</th>
+                            <th>Lớp</th>
+                            <th>Địa điểm</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>20/05/2025 08:00</td>
+                            <td>Khám tổng quát</td>
+                            <td>Lớp 1A</td>
+                            <td>Phòng khám số 1</td>
+                            <td><span class="schedule-status status-upcoming">Sắp tới</span></td>
+                            <td>
+                                <button class="btn btn-secondary btn-sm">Chi tiết</button>
+                                <button class="btn btn-danger btn-sm">Hủy</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>22/05/2025 09:30</td>
+                            <td>Khám răng miệng</td>
+                            <td>Lớp 2B</td>
+                            <td>Phòng khám số 2</td>
+                            <td><span class="schedule-status status-upcoming">Sắp tới</span></td>
+                            <td>
+                                <button class="btn btn-secondary btn-sm">Chi tiết</button>
+                                <button class="btn btn-danger btn-sm">Hủy</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="logo">
+                    <img src="images/imagez/LOGO_Health.png" alt="SchoolHealth Logo">          
+                    <span>SchoolHealth</span>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Giải pháp</h4>
+                        <a href="#">Trường K-12</a>
+                        <a href="#">Trung tâm Y tế</a>
+                        <a href="#">Đại học</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Tài nguyên</h4>
+                        <a href="#">Blog</a>
+                        <a href="#">Nghiên cứu điển hình</a>
+                        <a href="#">Hướng dẫn</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Công ty</h4>
+                        <a href="#">Về chúng tôi</a>
+                        <a href="#">Cơ hội nghề nghiệp</a>
+                        <a href="#">Liên hệ</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Pháp lý</h4>
+                        <a href="#">Chính sách Bảo mật</a>
+                        <a href="#">Điều khoản Dịch vụ</a>
+                        <a href="#">Tuân thủ HIPAA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SchoolHealth. Bảo lưu mọi quyền.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form submission
+            const scheduleForm = document.getElementById('schedule-form');
+            scheduleForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                const checkupType = document.getElementById('checkup-type').value;
+                const targetClass = document.getElementById('target-class').value;
+                const checkupDate = document.getElementById('checkup-date').value;
+                const checkupTime = document.getElementById('checkup-time').value;
+                const location = document.getElementById('location').value;
+                const description = document.getElementById('description').value;
+
+                if (!checkupType || !targetClass || !checkupDate || !checkupTime || !location || !description) {
+                    alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+                    return;
+                }
+
+                // Simulate form submission
+                alert('Đã tạo lịch khám thành công!');
+                this.reset();
+            });
+
+            // Cancel button
+            document.getElementById('cancel-btn').addEventListener('click', function() {
+                if (confirm('Bạn có chắc muốn hủy? Mọi thông tin sẽ không được lưu.')) {
+                    scheduleForm.reset();
+                }
+            });
+
+            // Filter functionality
+            const filterType = document.getElementById('filter-type');
+            const filterStatus = document.getElementById('filter-status');
+
+            function applyFilters() {
+                // Implement filter logic here
+                console.log('Filtering by:', filterType.value, filterStatus.value);
+            }
+
+            filterType.addEventListener('change', applyFilters);
+            filterStatus.addEventListener('change', applyFilters);
+
+            // Logout functionality
+            const logoutBtn = document.querySelector('.logout-btn');
+            logoutBtn.addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html> 
