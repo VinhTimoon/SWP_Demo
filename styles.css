@@ -1,6 +1,6 @@
 /* Base Styles */
 :root {
-    --primary-color: #0f3c78;
+    --primary-color: #1e88e5;       /* Brighter blue */
     --secondary-color: #f79a3e;
     --text-color: #333;
     --light-gray: #f8f9fa;
@@ -176,7 +176,7 @@ footer .logo img {
 
 /* Hero Section with Banner Background */
 .hero {
-    background: linear-gradient(rgba(15,60,120,0.45), rgba(15,60,120,0.35)), url('images/imagez/Banner-new-scaled.jpg') center center/cover no-repeat;
+    background: linear-gradient(rgba(30,136,229,0.45), rgba(30,136,229,0.35)), url('images/imagez/Banner-new-scaled.jpg') center center/cover no-repeat;
     min-height: 420px;
     display: flex;
     align-items: center;
@@ -195,7 +195,7 @@ footer .logo img {
 }
 .hero-content {
     max-width: 600px;
-    background: rgba(15,60,120,0.18);
+    background: rgba(30,136,229,0.18);
     padding: 36px 32px 32px 32px;
     border-radius: 18px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.10);
