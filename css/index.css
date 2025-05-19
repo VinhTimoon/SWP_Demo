@@ -1,0 +1,343 @@
+/* Index Page Styles */
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Leading Software Section */
+.leading-software {
+    padding: 5rem 0;
+    background: #f8f9fa;
+}
+
+.software-content {
+    max-width: 600px;
+}
+
+.software-content h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.software-content p {
+    color: #666;
+    line-height: 1.8;
+}
+
+.software-image {
+    position: relative;
+}
+
+.software-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.award-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+}
+
+/* Why Choose Section */
+.why-choose {
+    padding: 5rem 0;
+}
+
+.why-choose h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.why-choose > p {
+    text-align: center;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card .icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* School Types Section */
+.school-types {
+    padding: 5rem 0;
+    background: #f8f9fa;
+}
+
+.school-types h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 3rem;
+}
+
+.school-slider {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.slide-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.slide-content {
+    padding: 2rem;
+}
+
+.slide-content .icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1.5rem;
+}
+
+.slide-content h3 {
+    font-size: 1.75rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.slide-content p {
+    color: #666;
+    line-height: 1.8;
+}
+
+.slide-controls {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.slide-controls button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.slide-controls button:hover {
+    background: #007bff;
+    color: #fff;
+}
+
+/* Mobile App Section */
+.mobile-app {
+    padding: 5rem 0;
+}
+
+.mobile-app h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 3rem;
+}
+
+.app-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.app-description {
+    padding: 2rem;
+}
+
+.app-description p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.app-features-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.app-feature {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.app-feature .icon {
+    width: 50px;
+    height: 50px;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-feature .icon.blue {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.app-feature .icon.light-blue {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.app-feature .icon.orange {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.feature-text h4 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.feature-text p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.app-image {
+    text-align: center;
+}
+
+.app-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .slide.active {
+        grid-template-columns: 1fr;
+    }
+    
+    .app-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .app-image {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 4rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .software-content h2,
+    .why-choose h2,
+    .school-types h2,
+    .mobile-app h2 {
+        font-size: 2rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .slide-content {
+        padding: 1rem;
+    }
+    
+    .slide-controls {
+        position: static;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+} 
