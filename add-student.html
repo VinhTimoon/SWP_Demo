@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm Học Sinh Mới - SchoolHealth</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/add-student.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header Section -->
@@ -73,18 +73,20 @@
         <div class="student-form-container">
             <!-- Success Message (Hidden by default) -->
             <div class="form-message success" style="display: none;">
-                <i class="fas fa-check-circle"></i> Hồ sơ học sinh đã được tạo thành công!
+                <i class="fas fa-check-circle"></i>
+                <span>Hồ sơ học sinh đã được tạo thành công!</span>
             </div>
             
             <!-- Error Message (Hidden by default) -->
             <div class="form-message error" style="display: none;">
-                <i class="fas fa-exclamation-circle"></i> Có lỗi xảy ra. Vui lòng kiểm tra lại các thông tin.
+                <i class="fas fa-exclamation-circle"></i>
+                <span>Có lỗi xảy ra. Vui lòng kiểm tra lại các thông tin.</span>
             </div>
             
-            <form id="add-student-form">
+            <form id="add-student-form" novalidate>
                 <!-- Personal Information -->
                 <div class="form-section">
-                    <h2>Thông tin cá nhân</h2>
+                    <h2><i class="fas fa-user"></i> Thông tin cá nhân</h2>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="student_id">Mã học sinh <span class="required">*</span></label>
@@ -151,7 +153,7 @@
 
                 <!-- Contact Information -->
                 <div class="form-section">
-                    <h2>Thông tin liên hệ</h2>
+                    <h2><i class="fas fa-address-book"></i> Thông tin liên hệ</h2>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="address">Địa chỉ <span class="required">*</span></label>
@@ -190,7 +192,7 @@
 
                 <!-- Health Information -->
                 <div class="form-section">
-                    <h2>Thông tin sức khỏe</h2>
+                    <h2><i class="fas fa-heartbeat"></i> Thông tin sức khỏe</h2>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="blood_type">Nhóm máu</label>
@@ -265,7 +267,7 @@
 
                 <!-- Additional Notes -->
                 <div class="form-section">
-                    <h2>Ghi chú thêm</h2>
+                    <h2><i class="fas fa-sticky-note"></i> Ghi chú thêm</h2>
                     <div class="form-row">
                         <div class="form-group full-width">
                             <label for="notes">Ghi chú</label>
@@ -341,11 +343,18 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('add-student-form');
+            const successMessage = document.querySelector('.form-message.success');
+            const errorMessage = document.querySelector('.form-message.error');
+            const submitBtn = document.getElementById('submit-btn');
+            const saveDraftBtn = document.getElementById('save-draft-btn');
+            const cancelBtn = document.getElementById('cancel-btn');
+            
             // Photo Upload Preview
             const photoInput = document.getElementById('student_photo');
             const photoPreview = document.querySelector('.photo-preview');
             
-            photoInput.addEventListener('change', function() {
+            photoInput?.addEventListener('change', function() {
                 const file = this.files[0];
                 if (file) {
                     const reader = new FileReader();
@@ -358,88 +367,134 @@
             
             // Handle allergy checkbox to show/hide details
             const allergyCheckbox = document.getElementById('allergy');
-            const allergyDetails = document.getElementById('allergy_details').parentElement.parentElement;
+            const allergyDetails = document.getElementById('allergy_details')?.parentElement?.parentElement;
             
-            allergyCheckbox.addEventListener('change', function() {
-                allergyDetails.style.display = this.checked ? 'flex' : 'none';
+            allergyCheckbox?.addEventListener('change', function() {
+                if (allergyDetails) {
+                    allergyDetails.style.display = this.checked ? 'flex' : 'none';
+                }
             });
             
             // Initialize - hide allergy details if not checked
-            allergyDetails.style.display = allergyCheckbox.checked ? 'flex' : 'none';
+            if (allergyDetails) {
+                allergyDetails.style.display = allergyCheckbox?.checked ? 'flex' : 'none';
+            }
             
             // Handle "Other" condition checkbox
             const otherConditionCheckbox = document.getElementById('other_condition');
             const otherConditionDetails = document.querySelector('.other-condition-details');
             
-            otherConditionCheckbox.addEventListener('change', function() {
-                otherConditionDetails.style.display = this.checked ? 'flex' : 'none';
-                if (this.checked) {
-                    // Focus the input field when checkbox is checked
-                    document.getElementById('other_condition_details').focus();
-                } else {
-                    // Clear the field when unchecked
-                    document.getElementById('other_condition_details').value = '';
+            otherConditionCheckbox?.addEventListener('change', function() {
+                if (otherConditionDetails) {
+                    otherConditionDetails.style.display = this.checked ? 'flex' : 'none';
+                    if (this.checked) {
+                        // Focus the input field when checkbox is checked
+                        document.getElementById('other_condition_details')?.focus();
+                    } else {
+                        // Clear the field when unchecked
+                        const otherDetailsInput = document.getElementById('other_condition_details');
+                        if (otherDetailsInput) {
+                            otherDetailsInput.value = '';
+                        }
+                    }
                 }
             });
             
             // Initialize - hide other condition details if not checked
-            otherConditionDetails.style.display = otherConditionCheckbox.checked ? 'flex' : 'none';
+            if (otherConditionDetails) {
+                otherConditionDetails.style.display = otherConditionCheckbox?.checked ? 'flex' : 'none';
+            }
             
             // Form submission handling
-            const form = document.getElementById('add-student-form');
-            const successMessage = document.querySelector('.form-message.success');
-            const errorMessage = document.querySelector('.form-message.error');
-            
-            form.addEventListener('submit', function(e) {
+            form?.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                // Simulate form validation and submission
+                // Hide any previous messages
+                if (successMessage) successMessage.style.display = 'none';
+                if (errorMessage) errorMessage.style.display = 'none';
+                
+                // Validate form
                 if (validateForm()) {
-                    // Hide any previous messages
-                    successMessage.style.display = 'none';
-                    errorMessage.style.display = 'none';
+                    // Disable submit button and show loading state
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.classList.add('loading');
+                    }
                     
-                    // Show success message (simulating successful API call)
-                    setTimeout(() => {
-                        successMessage.style.display = 'block';
-                        form.reset();
-                        photoPreview.innerHTML = '<i class="fas fa-user"></i>';
+                    try {
+                        // Simulate API call
+                        await new Promise(resolve => setTimeout(resolve, 1000));
                         
-                        // Scroll to top to see the message
-                        window.scrollTo({top: 0, behavior: 'smooth'});
-                        
-                        // Redirect to dashboard after 3 seconds
-                        setTimeout(() => {
-                            window.location.href = 'dashboard.html';
-                        }, 3000);
-                    }, 1000);
+                        // Show success message
+                        if (successMessage) {
+                            successMessage.style.display = 'flex';
+                            form.reset();
+                            if (photoPreview) {
+                                photoPreview.innerHTML = '<i class="fas fa-user"></i>';
+                            }
+                            
+                            // Scroll to top to see the message
+                            window.scrollTo({top: 0, behavior: 'smooth'});
+                            
+                            // Redirect to dashboard after 3 seconds
+                            setTimeout(() => {
+                                window.location.href = 'dashboard.html';
+                            }, 3000);
+                        }
+                    } catch (err) {
+                        // Show error message
+                        if (errorMessage) {
+                            errorMessage.style.display = 'flex';
+                            window.scrollTo({top: 0, behavior: 'smooth' });
+                        }
+                    } finally {
+                        // Re-enable submit button and remove loading state
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('loading');
+                        }
+                    }
                 } else {
                     // Show error message
-                    errorMessage.style.display = 'block';
-                    
-                    // Scroll to top to see the message
-                    window.scrollTo({top: 0, behavior: 'smooth'});
+                    if (errorMessage) {
+                        errorMessage.style.display = 'flex';
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
                 }
             });
             
             // Cancel button
-            document.getElementById('cancel-btn').addEventListener('click', function() {
+            cancelBtn?.addEventListener('click', function() {
                 if (confirm('Bạn có chắc muốn hủy? Mọi thông tin sẽ không được lưu.')) {
                     window.location.href = 'dashboard.html';
                 }
             });
             
             // Save draft button
-            document.getElementById('save-draft-btn').addEventListener('click', function() {
-                alert('Đã lưu nháp thành công!');
+            saveDraftBtn?.addEventListener('click', async function() {
+                if (saveDraftBtn) {
+                    saveDraftBtn.disabled = true;
+                    saveDraftBtn.classList.add('loading');
+                }
+                
+                try {
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    alert('Đã lưu nháp thành công!');
+                } finally {
+                    if (saveDraftBtn) {
+                        saveDraftBtn.disabled = false;
+                        saveDraftBtn.classList.remove('loading');
+                    }
+                }
             });
             
             // Simple form validation
             function validateForm() {
-                const requiredFields = form.querySelectorAll('[required]');
+                const requiredFields = form?.querySelectorAll('[required]');
                 let valid = true;
                 
-                requiredFields.forEach(field => {
+                requiredFields?.forEach(field => {
                     if (!field.value.trim()) {
                         valid = false;
                         field.classList.add('invalid');
@@ -450,6 +505,12 @@
                 
                 return valid;
             }
+
+            // Xử lý nút đăng xuất chuyển về trang chính
+            const logoutBtn = document.querySelector('.logout-btn');
+            logoutBtn?.addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
         });
     </script>
 </body>

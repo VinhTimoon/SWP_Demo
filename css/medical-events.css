@@ -1,0 +1,324 @@
+/* Medical Events Page Styles */
+:root {
+    --primary-color: #1e88e5;
+    --secondary-color: #2196F3;
+    --success-color: #4CAF50;
+    --danger-color: #f44336;
+    --warning-color: #ff9800;
+    --text-color: #333;
+    --border-color: #ddd;
+    --bg-light: #f9f9f9;
+    --shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --light-blue: #e3f2fd;
+    --primary-dark: #1565c0;
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, var(--bg-light) 0%, #e4e8ef 100%);
+    padding: 40px 0;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 30px;
+}
+
+.page-header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.page-header h1 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.page-header p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: "/";
+    margin-left: 8px;
+    color: var(--border-color);
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-dark);
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 30px 0;
+    }
+    
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .page-header p {
+        font-size: 1rem;
+    }
+    
+    .breadcrumb {
+        font-size: 0.9rem;
+    }
+}
+
+/* Medical Event Form */
+.medical-event-form {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.student-search {
+    margin-bottom: 20px;
+}
+
+.student-search input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.student-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.student-info.active {
+    display: block;
+}
+
+.student-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info-item label {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.info-item span {
+    color: #666;
+}
+
+.emergency-form {
+    display: grid;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.severity-level {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.severity-option {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.severity-option:hover {
+    border-color: var(--primary-color);
+}
+
+.severity-option.selected {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #1976d2;
+}
+
+.btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+/* Emergency List */
+.emergency-list {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+.emergency-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.emergency-table th,
+.emergency-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.emergency-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.emergency-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.status-critical {
+    background: #ffebee;
+    color: #d32f2f;
+}
+
+.status-serious {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.status-moderate {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+
+.status-resolved {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 30px 0;
+    }
+    
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .page-header p {
+        font-size: 1rem;
+    }
+    
+    .breadcrumb {
+        font-size: 0.9rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .student-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .severity-level {
+        flex-direction: column;
+    }
+} 
