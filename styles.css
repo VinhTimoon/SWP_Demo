@@ -159,6 +159,10 @@ footer .logo img {
     height: 120px;
 }
 
+footer .logo span {
+    color: white;
+}
+
 .nav-links {
     display: flex;
     gap: 25px;
@@ -1133,6 +1137,7 @@ footer {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 .news-list-summary {
@@ -1144,6 +1149,7 @@ footer {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 .news-list-actions {
