@@ -109,15 +109,15 @@
             <!-- Quick Actions -->
             <h2>Hành động nhanh</h2>
             <div class="dashboard-actions">
-                <div class="action-card">
+                <a href="add-student.html" class="action-card">
                     <div class="icon">
                         <i class="fas fa-plus-circle"></i>
                     </div>
                     <h3>Thêm học sinh mới</h3>
                     <p>Tạo hồ sơ sức khỏe cho học sinh mới</p>
-                </div>
+                </a>
                 
-                <div class="action-card">
+                <div class="action-card" onclick="alert('Tính năng này đang được phát triển!')">
                     <div class="icon">
                         <i class="fas fa-calendar-check"></i>
                     </div>
@@ -125,7 +125,7 @@
                     <p>Quản lý lịch khám sức khỏe định kỳ</p>
                 </div>
                 
-                <div class="action-card">
+                <div class="action-card" onclick="alert('Tính năng này đang được phát triển!')">
                     <div class="icon">
                         <i class="fas fa-chart-bar"></i>
                     </div>
@@ -133,13 +133,13 @@
                     <p>Xem thống kê và xuất báo cáo sức khỏe</p>
                 </div>
 
-                <div class="action-card">
+                <a href="medical-events.html" class="action-card">
                     <div class="icon">
                         <i class="fas fa-heartbeat"></i>
                     </div>
                     <h3>Sự kiện y tế</h3>
                     <p>Quản lý và theo dõi các sự kiện y tế trong trường</p>
-                </div>
+                </a>
             </div>
 
             <!-- Recent Activities -->
@@ -308,22 +308,6 @@
                 });
             });
             
-            // Handle action cards click - Update the first card to go to add-student.html
-            const actionCards = document.querySelectorAll('.action-card');
-            actionCards.forEach((card, index) => {
-                card.addEventListener('click', function() {
-                    if (index === 0) {
-                        // First card - "Thêm học sinh mới"
-                        window.location.href = 'add-student.html';
-                    } else if (index === 3) {
-                        // Fourth card - "Sự kiện y tế"
-                        window.location.href = 'medical-events.html';
-                    } else {
-                        alert('Tính năng này đang được phát triển!');
-                    }
-                });
-            });
-            
             // Handle view all links
             const viewAllLinks = document.querySelectorAll('.view-all');
             viewAllLinks.forEach(link => {
@@ -332,7 +316,7 @@
                 });
             });
 
-            // Chatbot functionality (same as in index.html)
+            // Chatbot functionality
             const chatbotIcon = document.querySelector('.bot-icon');
             if (chatbotIcon) {
                 chatbotIcon.addEventListener('click', function() {
