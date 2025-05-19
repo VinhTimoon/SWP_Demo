@@ -146,13 +146,24 @@ nav .container {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    text-decoration: none;
 }
 
 .logo img {
-    height: 60px;
+    height: 40px;
+    width: auto;
+}
+
+.logo span {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+footer .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 footer .logo img {
@@ -161,6 +172,8 @@ footer .logo img {
 
 footer .logo span {
     color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .nav-links {
@@ -725,11 +738,11 @@ footer {
   border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
-  color: #0f3c78;
+  color: #1e88e5;
   transition: background 0.2s, color 0.2s;
 }
 .role-tab.active, .role-tab:hover {
-  background: #0f3c78;
+  background: #1e88e5;
   color: #fff;
 }
 .login-form {
@@ -1025,7 +1038,7 @@ footer {
   margin-bottom: 28px;
 }
 .contact-branch b {
-  color: #0f3c78;
+  color: #1e88e5;
   font-size: 1.1rem;
 }
 .contact-branch p {
@@ -1425,7 +1438,7 @@ footer {
   margin-bottom: 18px;
 }
 .partner-card h3 {
-  color: #0f3c78;
+  color: #1e88e5;
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 10px;
@@ -1433,7 +1446,7 @@ footer {
 }
 .partner-date {
   background: #e6f0ff;
-  color: #0f3c78;
+  color: #1e88e5;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 16px;
@@ -1520,7 +1533,7 @@ footer {
   border: 4px solid #fff;
 }
 .benefit-card h3 {
-  color: #0f3c78;
+  color: #1e88e5;
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 10px;

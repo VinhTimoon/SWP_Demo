@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - SchoolHealth</title>
+    <title>Thêm Học Sinh Mới - SchoolHealth</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <!-- Header Section -->
@@ -46,7 +45,13 @@
                     <a href="partners.html">Đối tác</a>
                     <a href="contact.html">Liên hệ</a>
                 </div>
-                <a href="index.html" class="logout-btn">Đăng xuất</a>
+                <div class="user-profile">
+                    <span>Y tá trường học</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <button class="logout-btn">Đăng xuất</button>
+                </div>
             </div>
         </nav>
     </header>
@@ -58,13 +63,6 @@
                 <div>
                     <h1>Xin chào, Nguyễn Văn A</h1>
                     <p>Chào mừng quay trở lại với SchoolHealth. Bạn có 3 nhiệm vụ cần hoàn thành hôm nay.</p>
-                </div>
-                <div class="user-profile">
-                    <span>Y tá trường học</span>
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <button class="logout-btn">Đăng xuất</button>
                 </div>
             </div>
         </div>
@@ -111,15 +109,15 @@
             <!-- Quick Actions -->
             <h2>Hành động nhanh</h2>
             <div class="dashboard-actions">
-                <div class="action-card">
+                <a href="add-student.html" class="action-card">
                     <div class="icon">
                         <i class="fas fa-plus-circle"></i>
                     </div>
                     <h3>Thêm học sinh mới</h3>
                     <p>Tạo hồ sơ sức khỏe cho học sinh mới</p>
-                </div>
+                </a>
                 
-                <div class="action-card">
+                <div class="action-card" onclick="alert('Tính năng này đang được phát triển!')">
                     <div class="icon">
                         <i class="fas fa-calendar-check"></i>
                     </div>
@@ -127,13 +125,21 @@
                     <p>Quản lý lịch khám sức khỏe định kỳ</p>
                 </div>
                 
-                <div class="action-card">
+                <div class="action-card" onclick="alert('Tính năng này đang được phát triển!')">
                     <div class="icon">
                         <i class="fas fa-chart-bar"></i>
                     </div>
                     <h3>Báo cáo và thống kê</h3>
                     <p>Xem thống kê và xuất báo cáo sức khỏe</p>
                 </div>
+
+                <a href="medical-events.html" class="action-card">
+                    <div class="icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Sự kiện y tế</h3>
+                    <p>Quản lý và theo dõi các sự kiện y tế trong trường</p>
+                </a>
             </div>
 
             <!-- Recent Activities -->
@@ -302,14 +308,6 @@
                 });
             });
             
-            // Handle action cards click
-            const actionCards = document.querySelectorAll('.action-card');
-            actionCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    alert('Tính năng này đang được phát triển!');
-                });
-            });
-            
             // Handle view all links
             const viewAllLinks = document.querySelectorAll('.view-all');
             viewAllLinks.forEach(link => {
@@ -318,7 +316,7 @@
                 });
             });
 
-            // Chatbot functionality (same as in index.html)
+            // Chatbot functionality
             const chatbotIcon = document.querySelector('.bot-icon');
             if (chatbotIcon) {
                 chatbotIcon.addEventListener('click', function() {

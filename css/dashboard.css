@@ -1,4 +1,8 @@
-/* Updated color scheme */
+/*----------------------------------------------
+  DASHBOARD STYLES
+----------------------------------------------*/
+
+/* Color Scheme */
 :root {
     --primary-color: #1e88e5;       /* Brighter blue */
     --primary-dark: #0d47a1;        /* Darker blue for contrast */
@@ -87,14 +91,14 @@
 
 /* Dashboard Header */
 .dashboard-header {
-    background-color: var(--background-light);
-    border-bottom: 1px solid #e0e0e0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ef 100%);
+    background: linear-gradient(135deg, var(--background-light) 0%, #e4e8ef 100%);
     padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .dashboard-header h1 {
     margin-bottom: 5px;
+    color: var(--dark-text);
 }
 
 .user-welcome {
@@ -121,6 +125,7 @@
     font-size: 1.5rem;
 }
 
+/* Dashboard Stats */
 .dashboard-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -132,9 +137,9 @@
     background-color: white;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-left: 4px solid transparent;
 }
 
@@ -175,7 +180,7 @@
 }
 
 .stat-card p {
-    color: #777;
+    color: var(--medium-text);
     margin: 0;
 }
 
@@ -201,6 +206,7 @@
     padding-left: 10px;
 }
 
+/* Dashboard Actions */
 .dashboard-actions {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -244,7 +250,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #EAF6FF;
+    background-color: var(--light-blue);
 }
 
 .action-card:hover .icon {
@@ -254,8 +260,10 @@
 .action-card h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
+    color: var(--dark-text);
 }
 
+/* Activity List */
 .activity-list {
     list-style: none;
     padding: 0;
@@ -290,13 +298,15 @@
 .activity-content h4 {
     margin: 0 0 5px;
     font-size: 1rem;
+    color: var(--dark-text);
 }
 
 .activity-time {
-    color: #777;
+    color: var(--light-text);
     font-size: 0.8rem;
 }
 
+/* Records Table */
 .record-table {
     width: 100%;
     border-collapse: collapse;
@@ -314,7 +324,7 @@
 }
 
 .record-table tbody tr:hover {
-    background-color: #f5f7fa;
+    background-color: var(--background-light);
 }
 
 .record-status {
@@ -322,6 +332,7 @@
     border-radius: 20px;
     font-size: 0.8rem;
     display: inline-block;
+    font-weight: 600;
 }
 
 .status-completed {
@@ -342,6 +353,7 @@
     font-weight: 600;
 }
 
+/* Utility Classes */
 .view-all {
     color: var(--primary-color);
     font-weight: 600;
@@ -363,6 +375,7 @@
     background-color: #ef9a9a;
 }
 
+/* Icon Colors */
 .blue {
     background-color: var(--light-blue);
     color: var(--primary-dark);
@@ -430,4 +443,4 @@
     .user-profile {
         justify-content: center;
     }
-} 
+}
