@@ -146,17 +146,34 @@ nav .container {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: white;
+    text-decoration: none;
 }
 
 .logo img {
-    height: 60px;
+    height: 40px;
+    width: auto;
+}
+
+.logo span {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+footer .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 footer .logo img {
     height: 120px;
+}
+
+footer .logo span {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .nav-links {
