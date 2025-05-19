@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Tiêm Chủng - SchoolHealth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/vaccination-management.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <div><i class="fas fa-map-marker-alt"></i>Đại học FPT Campus HCM</div>
+                    <div><i class="fas fa-phone-alt"></i> +84 123 999 9999</div>
+                    <div><i class="fas fa-envelope"></i> fptDaiGaKu@schoolhealthsystem.com</div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="images/imagez/LOGO_Health.png" alt="SchoolHealth Logo">
+                    <span>SchoolHealth</span>
+                </a>
+                <div class="nav-links">
+                    <a href="dashboard.html">Bảng điều khiển</a>
+                    <a href="news.html">Tin tức</a>
+                    <a href="partners.html">Đối tác</a>
+                    <a href="contact.html">Liên hệ</a>
+                </div>
+                <div class="user-profile">
+                    <span>Y tá học đường</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <button class="logout-btn">Đăng xuất</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <ul class="breadcrumb">
+                        <li><a href="dashboard.html">Bảng điều khiển</a></li>
+                        <li>Quản lý tiêm chủng</li>
+                    </ul>
+                    <h1 class="page-title">Quản Lý Tiêm Chủng</h1>
+                    <p class="page-description">Quản lý và theo dõi quy trình tiêm chủng cho học sinh</p>
+                </div>
+                <div class="header-icon">
+                    <i class="fas fa-syringe"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+    .page-header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #2c5282 100%);
+        padding: 40px 0;
+        color: white;
+        margin-bottom: 30px;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .header-text {
+        flex: 1;
+    }
+
+    .breadcrumb {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 15px 0;
+        display: flex;
+        gap: 10px;
+        font-size: 0.9rem;
+    }
+
+    .breadcrumb li {
+        display: flex;
+        align-items: center;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+        content: '/';
+        margin-left: 10px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .breadcrumb a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .breadcrumb a:hover {
+        color: white;
+    }
+
+    .page-title {
+        font-family: 'Roboto Slab', serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+        color: white;
+        line-height: 1.2;
+    }
+
+    .page-description {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .header-icon {
+        font-size: 4rem;
+        color: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+        .page-header {
+            padding: 30px 0;
+        }
+
+        .header-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .header-icon {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .page-description {
+            font-size: 1rem;
+        }
+
+        .breadcrumb {
+            justify-content: center;
+        }
+    }
+    </style>
+
+    <!-- Main Content -->
+    <section class="dashboard-main">
+        <div class="container">
+            <!-- Vaccination Stats -->
+            <div class="vaccination-stats">
+                <div class="stat-card">
+                    <div class="icon blue">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>150</h3>
+                    <p>Đã tiêm trong tháng</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="icon light-green">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>85%</h3>
+                    <p>Tỷ lệ tiêm đầy đủ</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="icon light-orange">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>25</h3>
+                    <p>Đang chờ tiêm</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="icon light-red">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>5</h3>
+                    <p>Cần theo dõi</p>
+                </div>
+            </div>
+
+            <!-- Vaccination Schedule -->
+            <div class="vaccination-schedule">
+                <div class="section-header">
+                    <h2>Lịch tiêm chủng</h2>
+                    <button class="btn btn-primary" id="addScheduleBtn">
+                        <i class="fas fa-plus"></i> Thêm lịch tiêm
+                    </button>
+                </div>
+
+                <div class="schedule-filters">
+                    <select id="filterVaccine">
+                        <option value="all">Tất cả vaccine</option>
+                        <option value="covid">COVID-19</option>
+                        <option value="flu">Cúm mùa</option>
+                        <option value="mmr">Sởi - Quai bị - Rubella</option>
+                        <option value="hpv">HPV</option>
+                    </select>
+                    <select id="filterStatus">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="upcoming">Sắp tới</option>
+                        <option value="ongoing">Đang diễn ra</option>
+                        <option value="completed">Đã hoàn thành</option>
+                    </select>
+                    <input type="date" id="filterDate" placeholder="Chọn ngày">
+                </div>
+
+                <div class="schedule-list">
+                    <!-- Upcoming Schedule -->
+                    <div class="schedule-item upcoming">
+                        <div class="schedule-header">
+                            <div class="vaccine-info">
+                                <h3>Tiêm vaccine COVID-19 mũi nhắc lại</h3>
+                                <span class="date"><i class="far fa-calendar"></i> 15/03/2024</span>
+                                <span class="time"><i class="far fa-clock"></i> 08:00 - 11:00</span>
+                            </div>
+                            <span class="status-badge upcoming">Sắp tới</span>
+                        </div>
+                        <div class="schedule-details">
+                            <div class="detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>Lớp: 10A, 10B, 10C</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Địa điểm: Phòng Y tế</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-user-md"></i>
+                                <span>Người thực hiện: Bác sĩ Nguyễn Văn A</span>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <button class="btn btn-primary">Xem chi tiết</button>
+                            <button class="btn btn-secondary">Chỉnh sửa</button>
+                            <button class="btn btn-danger">Hủy lịch</button>
+                        </div>
+                    </div>
+
+                    <!-- Ongoing Schedule -->
+                    <div class="schedule-item ongoing">
+                        <div class="schedule-header">
+                            <div class="vaccine-info">
+                                <h3>Tiêm vaccine Cúm mùa</h3>
+                                <span class="date"><i class="far fa-calendar"></i> 10/03/2024</span>
+                                <span class="time"><i class="far fa-clock"></i> 13:00 - 16:00</span>
+                            </div>
+                            <span class="status-badge ongoing">Đang diễn ra</span>
+                        </div>
+                        <div class="schedule-details">
+                            <div class="detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>Lớp: 11A, 11B</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Địa điểm: Phòng Y tế</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-user-md"></i>
+                                <span>Người thực hiện: Y tá Trần Thị B</span>
+                            </div>
+                        </div>
+                        <div class="schedule-progress">
+                            <div class="progress-info">
+                                <span>Tiến độ: 45/60 học sinh</span>
+                                <span class="percentage">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <button class="btn btn-primary">Cập nhật tiến độ</button>
+                            <button class="btn btn-secondary">Xem chi tiết</button>
+                        </div>
+                    </div>
+
+                    <!-- Completed Schedule -->
+                    <div class="schedule-item completed">
+                        <div class="schedule-header">
+                            <div class="vaccine-info">
+                                <h3>Tiêm vaccine HPV</h3>
+                                <span class="date"><i class="far fa-calendar"></i> 05/03/2024</span>
+                                <span class="time"><i class="far fa-clock"></i> 08:00 - 11:00</span>
+                            </div>
+                            <span class="status-badge completed">Đã hoàn thành</span>
+                        </div>
+                        <div class="schedule-details">
+                            <div class="detail-item">
+                                <i class="fas fa-users"></i>
+                                <span>Lớp: 12A, 12B</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Địa điểm: Phòng Y tế</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-user-md"></i>
+                                <span>Người thực hiện: Bác sĩ Lê Văn C</span>
+                            </div>
+                        </div>
+                        <div class="schedule-summary">
+                            <div class="summary-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Đã tiêm: 58/60 học sinh</span>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>Cần theo dõi: 2 học sinh</span>
+                            </div>
+                        </div>
+                        <div class="schedule-actions">
+                            <button class="btn btn-primary">Xem báo cáo</button>
+                            <button class="btn btn-secondary">Xuất dữ liệu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Vaccination Records -->
+            <div class="student-records">
+                <div class="section-header">
+                    <h2>Hồ sơ tiêm chủng học sinh</h2>
+                    <div class="search-box">
+                        <input type="text" placeholder="Tìm kiếm học sinh...">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="records-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Họ và tên</th>
+                                <th>Lớp</th>
+                                <th>COVID-19</th>
+                                <th>Cúm mùa</th>
+                                <th>MMR</th>
+                                <th>HPV</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nguyễn Văn A</td>
+                                <td>10A</td>
+                                <td><i class="fas fa-check-circle text-success"></i></td>
+                                <td><i class="fas fa-clock text-warning"></i></td>
+                                <td><i class="fas fa-check-circle text-success"></i></td>
+                                <td><i class="fas fa-times-circle text-danger"></i></td>
+                                <td><span class="status-badge pending">Cần tiêm bổ sung</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Chi tiết</button>
+                                    <button class="btn btn-sm btn-secondary">Cập nhật</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trần Thị B</td>
+                                <td>10B</td>
+                                <td><i class="fas fa-check-circle text-success"></i></td>
+                                <td><i class="fas fa-check-circle text-success"></i></td>
+                                <td><i class="fas fa-check-circle text-success"></i></td>
+                                <td><i class="fas fa-check-circle text-success"></i></td>
+                                <td><span class="status-badge completed">Đã tiêm đầy đủ</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Chi tiết</button>
+                                    <button class="btn btn-sm btn-secondary">Cập nhật</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Lê Văn C</td>
+                                <td>11A</td>
+                                <td><i class="fas fa-exclamation-circle text-warning"></i></td>
+                                <td><i class="fas fa-check-circle text-success"></i></td>
+                                <td><i class="fas fa-check-circle text-success"></i></td>
+                                <td><i class="fas fa-clock text-warning"></i></td>
+                                <td><span class="status-badge warning">Cần theo dõi</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Chi tiết</button>
+                                    <button class="btn btn-sm btn-secondary">Cập nhật</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="logo">
+                    <img src="images/imagez/LOGO_Health.png" alt="SchoolHealth Logo">          
+                    <span>SchoolHealth</span>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Giải pháp</h4>
+                        <a href="#">Trường K-12</a>
+                        <a href="#">Trung tâm Y tế</a>
+                        <a href="#">Đại học</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Tài nguyên</h4>
+                        <a href="#">Blog</a>
+                        <a href="#">Nghiên cứu điển hình</a>
+                        <a href="#">Hướng dẫn</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Công ty</h4>
+                        <a href="#">Về chúng tôi</a>
+                        <a href="#">Cơ hội nghề nghiệp</a>
+                        <a href="#">Liên hệ</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Pháp lý</h4>
+                        <a href="#">Chính sách Bảo mật</a>
+                        <a href="#">Điều khoản Dịch vụ</a>
+                        <a href="#">Tuân thủ HIPAA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SchoolHealth. Bảo lưu mọi quyền.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- View Details Modal -->
+    <div class="modal" id="viewDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Chi tiết lịch tiêm chủng</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="schedule-details-view">
+                    <div class="detail-group">
+                        <h3>Thông tin chung</h3>
+                        <div class="detail-item">
+                            <i class="fas fa-syringe"></i>
+                            <span>Loại vaccine: <strong id="detailVaccineType"></strong></span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="far fa-calendar"></i>
+                            <span>Ngày tiêm: <strong id="detailDate"></strong></span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="far fa-clock"></i>
+                            <span>Thời gian: <strong id="detailTime"></strong></span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Địa điểm: <strong id="detailLocation"></strong></span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-group">
+                        <h3>Danh sách học sinh</h3>
+                        <div class="student-list" id="detailStudentList">
+                            <!-- Student list will be populated dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="detail-group">
+                        <h3>Ghi chú</h3>
+                        <p id="detailNotes"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Schedule Modal -->
+    <div class="modal" id="editScheduleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Chỉnh sửa lịch tiêm chủng</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editScheduleForm">
+                    <div class="form-group">
+                        <label for="editVaccineType">Loại vaccine</label>
+                        <select id="editVaccineType" required>
+                            <option value="covid">COVID-19</option>
+                            <option value="flu">Cúm mùa</option>
+                            <option value="mmr">Sởi - Quai bị - Rubella</option>
+                            <option value="hpv">HPV</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editDate">Ngày tiêm</label>
+                        <input type="date" id="editDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editTime">Thời gian</label>
+                        <input type="time" id="editTime" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editLocation">Địa điểm</label>
+                        <input type="text" id="editLocation" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editClasses">Lớp tham gia</label>
+                        <select id="editClasses" multiple required>
+                            <option value="10A">Lớp 10A</option>
+                            <option value="10B">Lớp 10B</option>
+                            <option value="10C">Lớp 10C</option>
+                            <option value="11A">Lớp 11A</option>
+                            <option value="11B">Lớp 11B</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editNotes">Ghi chú</label>
+                        <textarea id="editNotes" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Hủy</button>
+                <button class="btn btn-primary" id="saveEditBtn">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cancel Schedule Modal -->
+    <div class="modal" id="cancelScheduleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Xác nhận hủy lịch</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn hủy lịch tiêm chủng này?</p>
+                <form id="cancelScheduleForm">
+                    <div class="form-group">
+                        <label for="cancelReason">Lý do hủy</label>
+                        <textarea id="cancelReason" rows="3" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Không</button>
+                <button class="btn btn-danger" id="confirmCancelBtn">Xác nhận hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Progress Modal -->
+    <div class="modal" id="updateProgressModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Cập nhật tiến độ tiêm chủng</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="updateProgressForm">
+                    <div class="progress-summary">
+                        <div class="progress-stat">
+                            <span>Tổng số học sinh:</span>
+                            <strong id="totalStudents">0</strong>
+                        </div>
+                        <div class="progress-stat">
+                            <span>Đã tiêm:</span>
+                            <strong id="vaccinatedCount">0</strong>
+                        </div>
+                        <div class="progress-stat">
+                            <span>Còn lại:</span>
+                            <strong id="remainingCount">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="student-progress-list">
+                        <h3>Danh sách học sinh</h3>
+                        <div class="search-box">
+                            <input type="text" id="searchStudent" placeholder="Tìm kiếm học sinh...">
+                        </div>
+                        <div class="student-list" id="progressStudentList">
+                            <!-- Student list will be populated dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="progressNotes">Ghi chú</label>
+                        <textarea id="progressNotes" rows="3" placeholder="Nhập ghi chú về tiến độ tiêm chủng..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Hủy</button>
+                <button class="btn btn-primary" id="saveProgressBtn">Lưu tiến độ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Report Modal -->
+    <div class="modal" id="viewReportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Báo cáo tiêm chủng</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="report-content">
+                    <div class="report-summary">
+                        <div class="summary-card">
+                            <h3>Tổng quan</h3>
+                            <div class="summary-stats">
+                                <div class="stat-item">
+                                    <span class="label">Tổng số học sinh:</span>
+                                    <span class="value" id="reportTotalStudents">60</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Đã tiêm đầy đủ:</span>
+                                    <span class="value" id="reportFullyVaccinated">45</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Chưa tiêm đủ:</span>
+                                    <span class="value" id="reportIncomplete">15</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Tỷ lệ tiêm đầy đủ:</span>
+                                    <span class="value" id="reportCompletionRate">75%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="summary-card">
+                            <h3>Thống kê theo vaccine</h3>
+                            <div class="vaccine-stats">
+                                <div class="vaccine-item">
+                                    <div class="vaccine-info">
+                                        <span class="vaccine-name">COVID-19</span>
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <span class="vaccine-count">54/60</span>
+                                </div>
+                                <div class="vaccine-item">
+                                    <div class="vaccine-info">
+                                        <span class="vaccine-name">Cúm mùa</span>
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <span class="vaccine-count">51/60</span>
+                                </div>
+                                <div class="vaccine-item">
+                                    <div class="vaccine-info">
+                                        <span class="vaccine-name">MMR</span>
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                    <span class="vaccine-count">57/60</span>
+                                </div>
+                                <div class="vaccine-item">
+                                    <div class="vaccine-info">
+                                        <span class="vaccine-name">HPV</span>
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                    <span class="vaccine-count">45/60</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="report-details">
+                        <h3>Chi tiết học sinh chưa tiêm đủ</h3>
+                        <div class="table-responsive">
+                            <table class="report-table">
+                                <thead>
+                                    <tr>
+                                        <th>Họ và tên</th>
+                                        <th>Lớp</th>
+                                        <th>Vaccine thiếu</th>
+                                        <th>Lý do</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="reportStudentList">
+                                    <!-- Will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="report-notes">
+                        <h3>Ghi chú</h3>
+                        <div class="notes-content" id="reportNotes">
+                            <p>- Cần theo dõi 5 học sinh chưa tiêm đủ vaccine HPV</p>
+                            <p>- 2 học sinh có phản ứng sau tiêm cần theo dõi</p>
+                            <p>- Lên lịch tiêm bổ sung cho học sinh khối 10 vào tuần tới</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="exportReportBtn">
+                    <i class="fas fa-file-export"></i> Xuất báo cáo
+                </button>
+                <button class="btn btn-primary" id="printReportBtn">
+                    <i class="fas fa-print"></i> In báo cáo
+                </button>
+                <button class="btn btn-secondary close-modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Data Modal -->
+    <div class="modal" id="exportDataModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Xuất dữ liệu tiêm chủng</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="exportDataForm">
+                    <div class="form-group">
+                        <label>Loại dữ liệu</label>
+                        <div class="export-options">
+                            <label class="export-option">
+                                <input type="checkbox" name="exportType" value="schedule" checked>
+                                <span>Lịch tiêm chủng</span>
+                            </label>
+                            <label class="export-option">
+                                <input type="checkbox" name="exportType" value="students">
+                                <span>Hồ sơ học sinh</span>
+                            </label>
+                            <label class="export-option">
+                                <input type="checkbox" name="exportType" value="statistics">
+                                <span>Thống kê</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Thời gian</label>
+                        <div class="date-range">
+                            <input type="date" id="exportStartDate" required>
+                            <span>đến</span>
+                            <input type="date" id="exportEndDate" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Định dạng xuất</label>
+                        <div class="export-format">
+                            <label class="format-option">
+                                <input type="radio" name="exportFormat" value="excel" checked>
+                                <span>Excel (.xlsx)</span>
+                            </label>
+                            <label class="format-option">
+                                <input type="radio" name="exportFormat" value="pdf">
+                                <span>PDF (.pdf)</span>
+                            </label>
+                            <label class="format-option">
+                                <input type="radio" name="exportFormat" value="csv">
+                                <span>CSV (.csv)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exportNotes">Ghi chú</label>
+                        <textarea id="exportNotes" rows="3" placeholder="Nhập ghi chú cho file xuất..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Hủy</button>
+                <button class="btn btn-primary" id="confirmExportBtn">
+                    <i class="fas fa-download"></i> Xuất dữ liệu
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterVaccine = document.getElementById('filterVaccine');
+            const filterStatus = document.getElementById('filterStatus');
+            const filterDate = document.getElementById('filterDate');
+
+            function applyFilters() {
+                const scheduleItems = document.querySelectorAll('.schedule-item');
+                const vaccineValue = filterVaccine.value;
+                const statusValue = filterStatus.value;
+                const dateValue = filterDate.value;
+
+                scheduleItems.forEach(item => {
+                    const vaccineType = item.querySelector('.vaccine-info h3').textContent.toLowerCase();
+                    const status = item.querySelector('.status-badge').classList[1];
+                    const itemDate = item.querySelector('.date').textContent.split(' ')[1];
+
+                    const vaccineMatch = vaccineValue === 'all' || vaccineType.includes(vaccineValue);
+                    const statusMatch = statusValue === 'all' || status === statusValue;
+                    const dateMatch = !dateValue || itemDate === dateValue;
+
+                    item.style.display = vaccineMatch && statusMatch && dateMatch ? 'block' : 'none';
+                });
+            }
+
+            filterVaccine.addEventListener('change', applyFilters);
+            filterStatus.addEventListener('change', applyFilters);
+            filterDate.addEventListener('change', applyFilters);
+
+            // Add Schedule Button
+            const addScheduleBtn = document.getElementById('addScheduleBtn');
+            addScheduleBtn.addEventListener('click', function() {
+                openModal(modals.editSchedule);
+                // Reset form
+                document.getElementById('editScheduleForm').reset();
+                // Change modal title and button text
+                document.querySelector('#editScheduleModal .modal-header h2').textContent = 'Thêm lịch tiêm chủng mới';
+                document.getElementById('saveEditBtn').textContent = 'Thêm lịch';
+            });
+
+            // Logout functionality
+            const logoutBtn = document.querySelector('.logout-btn');
+            logoutBtn.addEventListener('click', function() {
+                if (confirm('Bạn có chắc chắn muốn đăng xuất?')) {
+                    window.location.href = 'index.html';
+                }
+            });
+
+            // Modal Management
+            const modals = {
+                viewDetails: document.getElementById('viewDetailsModal'),
+                editSchedule: document.getElementById('editScheduleModal'),
+                cancelSchedule: document.getElementById('cancelScheduleModal'),
+                updateProgress: document.getElementById('updateProgressModal'),
+                viewReport: document.getElementById('viewReportModal'),
+                exportData: document.getElementById('exportDataModal')
+            };
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                Object.values(modals).forEach(modal => {
+                    if (e.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+            });
+
+            // Close modal when clicking close button
+            document.querySelectorAll('.close-modal').forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    closeModal(modal);
+                });
+            });
+
+            function closeModal(modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                // Reset forms when closing
+                if (modal.querySelector('form')) {
+                    modal.querySelector('form').reset();
+                }
+            }
+
+            function openModal(modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+
+            // View Details Handler
+            function openViewDetails(scheduleId) {
+                // Simulate fetching schedule details
+                const scheduleDetails = {
+                    vaccineType: 'COVID-19',
+                    date: '15/03/2024',
+                    time: '08:00 - 11:00',
+                    location: 'Phòng Y tế',
+                    students: [
+                        { name: 'Nguyễn Văn A', class: '10A', status: 'Đã tiêm' },
+                        { name: 'Trần Thị B', class: '10A', status: 'Chưa tiêm' },
+                        { name: 'Lê Văn C', class: '10B', status: 'Đã tiêm' }
+                    ],
+                    notes: 'Tiêm mũi nhắc lại cho học sinh khối 10'
+                };
+
+                // Populate modal with details
+                document.getElementById('detailVaccineType').textContent = scheduleDetails.vaccineType;
+                document.getElementById('detailDate').textContent = scheduleDetails.date;
+                document.getElementById('detailTime').textContent = scheduleDetails.time;
+                document.getElementById('detailLocation').textContent = scheduleDetails.location;
+                document.getElementById('detailNotes').textContent = scheduleDetails.notes;
+
+                const studentList = document.getElementById('detailStudentList');
+                studentList.innerHTML = scheduleDetails.students.map(student => `
+                    <div class="student-item">
+                        <span>${student.name} - ${student.class}</span>
+                        <span class="status-badge ${student.status === 'Đã tiêm' ? 'completed' : 'pending'}">${student.status}</span>
+                    </div>
+                `).join('');
+
+                openModal(modals.viewDetails);
+            }
+
+            // Edit Schedule Handler
+            function openEditSchedule(scheduleId) {
+                // Simulate fetching schedule data
+                const scheduleData = {
+                    vaccineType: 'covid',
+                    date: '2024-03-15',
+                    time: '08:00',
+                    location: 'Phòng Y tế',
+                    classes: ['10A', '10B', '10C'],
+                    notes: 'Tiêm mũi nhắc lại cho học sinh khối 10'
+                };
+
+                // Reset modal title and button text
+                document.querySelector('#editScheduleModal .modal-header h2').textContent = 'Chỉnh sửa lịch tiêm chủng';
+                document.getElementById('saveEditBtn').textContent = 'Lưu thay đổi';
+
+                // Populate form with schedule data
+                document.getElementById('editVaccineType').value = scheduleData.vaccineType;
+                document.getElementById('editDate').value = scheduleData.date;
+                document.getElementById('editTime').value = scheduleData.time;
+                document.getElementById('editLocation').value = scheduleData.location;
+                document.getElementById('editNotes').value = scheduleData.notes;
+
+                // Set selected classes
+                const classesSelect = document.getElementById('editClasses');
+                Array.from(classesSelect.options).forEach(option => {
+                    option.selected = scheduleData.classes.includes(option.value);
+                });
+
+                openModal(modals.editSchedule);
+            }
+
+            // Cancel Schedule Handler
+            function openCancelSchedule(scheduleId) {
+                openModal(modals.cancelSchedule);
+            }
+
+            // Update Progress Handler
+            function openUpdateProgress(scheduleId) {
+                // Simulate fetching progress data
+                const progressData = {
+                    totalStudents: 60,
+                    vaccinatedCount: 45,
+                    students: [
+                        { id: 1, name: 'Nguyễn Văn A', class: '10A', status: 'Đã tiêm' },
+                        { id: 2, name: 'Trần Thị B', class: '10A', status: 'Chưa tiêm' },
+                        { id: 3, name: 'Lê Văn C', class: '10B', status: 'Đã tiêm' }
+                    ]
+                };
+
+                // Update progress summary
+                document.getElementById('totalStudents').textContent = progressData.totalStudents;
+                document.getElementById('vaccinatedCount').textContent = progressData.vaccinatedCount;
+                document.getElementById('remainingCount').textContent = 
+                    progressData.totalStudents - progressData.vaccinatedCount;
+
+                // Populate student list
+                const studentList = document.getElementById('progressStudentList');
+                studentList.innerHTML = progressData.students.map(student => `
+                    <div class="student-progress-item">
+                        <div class="student-info">
+                            <span>${student.name} - ${student.class}</span>
+                        </div>
+                        <div class="student-status">
+                            <label class="switch">
+                                <input type="checkbox" ${student.status === 'Đã tiêm' ? 'checked' : ''} 
+                                    onchange="updateStudentStatus(this, '${student.name}')">
+                                <span class="slider round"></span>
+                            </label>
+                            <span class="status-text">${student.status}</span>
+                        </div>
+                    </div>
+                `).join('');
+
+                openModal(modals.updateProgress);
+            }
+
+            // Update student vaccination status
+            window.updateStudentStatus = function(checkbox, studentName) {
+                const statusText = checkbox.closest('.student-status').querySelector('.status-text');
+                const isChecked = checkbox.checked;
+                statusText.textContent = isChecked ? 'Đã tiêm' : 'Chưa tiêm';
+                
+                // Update counts
+                const vaccinatedCount = document.getElementById('vaccinatedCount');
+                const remainingCount = document.getElementById('remainingCount');
+                const totalStudents = document.getElementById('totalStudents').textContent;
+                
+                let currentVaccinated = parseInt(vaccinatedCount.textContent);
+                currentVaccinated += isChecked ? 1 : -1;
+                vaccinatedCount.textContent = currentVaccinated;
+                remainingCount.textContent = totalStudents - currentVaccinated;
+            };
+
+            // View Report Handler
+            function openViewReport(scheduleId) {
+                // Simulate fetching report data
+                const reportData = {
+                    summary: {
+                        totalStudents: 60,
+                        fullyVaccinated: 45,
+                        incomplete: 15,
+                        completionRate: '75%'
+                    },
+                    vaccineStats: [
+                        { name: 'COVID-19', count: 54, total: 60 },
+                        { name: 'Cúm mùa', count: 51, total: 60 },
+                        { name: 'MMR', count: 57, total: 60 },
+                        { name: 'HPV', count: 45, total: 60 }
+                    ],
+                    incompleteStudents: [
+                        { name: 'Nguyễn Văn A', class: '10A', missingVaccines: 'HPV', reason: 'Chờ đủ tuổi' },
+                        { name: 'Trần Thị B', class: '10B', missingVaccines: 'COVID-19', reason: 'Đang bệnh' },
+                        { name: 'Lê Văn C', class: '11A', missingVaccines: 'Cúm mùa', reason: 'Chờ lịch tiêm' }
+                    ],
+                    notes: [
+                        'Cần theo dõi 5 học sinh chưa tiêm đủ vaccine HPV',
+                        '2 học sinh có phản ứng sau tiêm cần theo dõi',
+                        'Lên lịch tiêm bổ sung cho học sinh khối 10 vào tuần tới'
+                    ]
+                };
+
+                // Update summary stats
+                document.getElementById('reportTotalStudents').textContent = reportData.summary.totalStudents;
+                document.getElementById('reportFullyVaccinated').textContent = reportData.summary.fullyVaccinated;
+                document.getElementById('reportIncomplete').textContent = reportData.summary.incomplete;
+                document.getElementById('reportCompletionRate').textContent = reportData.summary.completionRate;
+
+                // Update vaccine stats
+                const vaccineStats = document.querySelector('.vaccine-stats');
+                vaccineStats.innerHTML = reportData.vaccineStats.map(vaccine => `
+                    <div class="vaccine-item">
+                        <div class="vaccine-info">
+                            <span class="vaccine-name">${vaccine.name}</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: ${(vaccine.count/vaccine.total)*100}%"></div>
+                            </div>
+                        </div>
+                        <span class="vaccine-count">${vaccine.count}/${vaccine.total}</span>
+                    </div>
+                `).join('');
+
+                // Update incomplete students list
+                const studentList = document.getElementById('reportStudentList');
+                studentList.innerHTML = reportData.incompleteStudents.map(student => `
+                    <tr>
+                        <td>${student.name}</td>
+                        <td>${student.class}</td>
+                        <td>${student.missingVaccines}</td>
+                        <td>${student.reason}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="scheduleFollowUp('${student.name}')">
+                                Lên lịch
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+
+                // Update notes
+                const notesContent = document.getElementById('reportNotes');
+                notesContent.innerHTML = reportData.notes.map(note => `<p>${note}</p>`).join('');
+
+                openModal(modals.viewReport);
+            }
+
+            // Export Data Handler
+            function openExportData() {
+                // Set default date range to current month
+                const today = new Date();
+                const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+                const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+                
+                document.getElementById('exportStartDate').value = firstDay.toISOString().split('T')[0];
+                document.getElementById('exportEndDate').value = lastDay.toISOString().split('T')[0];
+                
+                openModal(modals.exportData);
+            }
+
+            // Schedule Follow-up Handler
+            window.scheduleFollowUp = function(studentName) {
+                alert(`Đã lên lịch theo dõi cho học sinh ${studentName}`);
+            };
+
+            // Attach event listeners to buttons
+            function attachButtonListeners() {
+                // View Details buttons
+                document.querySelectorAll('.btn-primary').forEach(button => {
+                    if (button.textContent.includes('Xem chi tiết')) {
+                        button.addEventListener('click', () => openViewDetails(button.closest('.schedule-item').dataset.id));
+                    }
+                });
+
+                // Edit buttons
+                document.querySelectorAll('.btn-secondary').forEach(button => {
+                    if (button.textContent.includes('Chỉnh sửa')) {
+                        button.addEventListener('click', () => openEditSchedule(button.closest('.schedule-item').dataset.id));
+                    }
+                });
+
+                // Cancel buttons
+                document.querySelectorAll('.btn-danger').forEach(button => {
+                    if (button.textContent.includes('Hủy lịch')) {
+                        button.addEventListener('click', () => openCancelSchedule(button.closest('.schedule-item').dataset.id));
+                    }
+                });
+
+                // Update Progress buttons
+                document.querySelectorAll('.btn-primary').forEach(button => {
+                    if (button.textContent.includes('Cập nhật tiến độ')) {
+                        button.addEventListener('click', () => openUpdateProgress(button.closest('.schedule-item').dataset.id));
+                    }
+                });
+
+                // View Report buttons
+                document.querySelectorAll('.btn-primary').forEach(button => {
+                    if (button.textContent.includes('Xem báo cáo')) {
+                        button.addEventListener('click', () => openViewReport(button.closest('.schedule-item').dataset.id));
+                    }
+                });
+
+                // Export Data buttons
+                document.querySelectorAll('.btn-secondary').forEach(button => {
+                    if (button.textContent.includes('Xuất dữ liệu')) {
+                        button.addEventListener('click', openExportData);
+                    }
+                });
+            }
+
+            // Initial attachment of button listeners
+            attachButtonListeners();
+
+            // Save Edit button
+            document.getElementById('saveEditBtn').addEventListener('click', function() {
+                const form = document.getElementById('editScheduleForm');
+                if (form.checkValidity()) {
+                    const isNewSchedule = this.textContent === 'Thêm lịch';
+                    if (isNewSchedule) {
+                        alert('Đã thêm lịch tiêm chủng mới thành công!');
+                    } else {
+                        alert('Đã cập nhật lịch tiêm chủng thành công!');
+                    }
+                    closeModal(modals.editSchedule);
+                } else {
+                    form.reportValidity();
+                }
+            });
+
+            // Confirm Cancel button
+            document.getElementById('confirmCancelBtn').addEventListener('click', function() {
+                const reason = document.getElementById('cancelReason').value;
+                if (reason.trim()) {
+                    if (confirm('Bạn có chắc chắn muốn hủy lịch tiêm chủng này?')) {
+                        alert('Đã hủy lịch tiêm chủng thành công!');
+                        closeModal(modals.cancelSchedule);
+                    }
+                } else {
+                    alert('Vui lòng nhập lý do hủy!');
+                }
+            });
+
+            // Save Progress button
+            document.getElementById('saveProgressBtn').addEventListener('click', function() {
+                const notes = document.getElementById('progressNotes').value;
+                alert('Đã cập nhật tiến độ tiêm chủng thành công!');
+                closeModal(modals.updateProgress);
+            });
+
+            // Search functionality in Update Progress modal
+            const searchInput = document.getElementById('searchStudent');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const studentItems = document.querySelectorAll('.student-progress-item');
+                    
+                    studentItems.forEach(item => {
+                        const studentName = item.querySelector('.student-info').textContent.toLowerCase();
+                        item.style.display = studentName.includes(searchTerm) ? 'flex' : 'none';
+                    });
+                });
+            }
+
+            // Export Report button
+            document.getElementById('exportReportBtn').addEventListener('click', function() {
+                openExportData();
+                // Pre-select report type
+                document.querySelector('input[value="statistics"]').checked = true;
+            });
+
+            // Print Report button
+            document.getElementById('printReportBtn').addEventListener('click', function() {
+                window.print();
+            });
+
+            // Confirm Export button
+            document.getElementById('confirmExportBtn').addEventListener('click', function() {
+                const form = document.getElementById('exportDataForm');
+                if (form.checkValidity()) {
+                    const selectedTypes = Array.from(document.querySelectorAll('input[name="exportType"]:checked'))
+                        .map(input => input.value);
+                    const format = document.querySelector('input[name="exportFormat"]:checked').value;
+                    const startDate = document.getElementById('exportStartDate').value;
+                    const endDate = document.getElementById('exportEndDate').value;
+                    const notes = document.getElementById('exportNotes').value;
+
+                    // Simulate export
+                    alert(`Đang xuất dữ liệu:\n- Loại: ${selectedTypes.join(', ')}\n- Định dạng: ${format}\n- Thời gian: ${startDate} đến ${endDate}`);
+                    closeModal(modals.exportData);
+                } else {
+                    form.reportValidity();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

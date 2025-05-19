@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo & Thống Kê - SchoolHealth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/reports-statistics.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <div><i class="fas fa-map-marker-alt"></i>Đại học FPT Campus HCM</div>
+                    <div><i class="fas fa-phone-alt"></i> +84 123 999 9999</div>
+                    <div><i class="fas fa-envelope"></i> fptDaiGaKu@schoolhealthsystem.com</div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="images/imagez/LOGO_Health.png" alt="SchoolHealth Logo">
+                    <span>SchoolHealth</span>
+                </a>
+                <div class="nav-links">
+                    <a href="dashboard.html">Bảng điều khiển</a>
+                    <a href="news.html">Tin tức</a>
+                    <a href="partners.html">Đối tác</a>
+                    <a href="contact.html">Liên hệ</a>
+                </div>
+                <div class="user-profile">
+                    <span>Y tá học đường</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <button class="logout-btn">Đăng xuất</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <ul class="breadcrumb">
+                        <li><a href="dashboard.html">Bảng điều khiển</a></li>
+                        <li>Báo cáo & Thống kê</li>
+                    </ul>
+                    <h1 class="page-title">Báo Cáo & Thống Kê</h1>
+                    <p class="page-description">Theo dõi và phân tích dữ liệu sức khỏe học sinh</p>
+                </div>
+                <div class="header-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="dashboard-main">
+        <div class="container">
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>1,234</h3>
+                        <p>Tổng số học sinh</p>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>5.2%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>456</h3>
+                        <p>Ca khám tháng này</p>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>2.1%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>89</h3>
+                        <p>Ca tiêm chủng</p>
+                    </div>
+                    <div class="stat-trend down">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>1.5%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>98.5%</h3>
+                        <p>Tỷ lệ sức khỏe tốt</p>
+                    </div>
+                    <div class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>0.8%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Thống kê khám sức khỏe</h2>
+                        <div class="chart-controls">
+                            <select id="timeRange">
+                                <option value="week">Tuần này</option>
+                                <option value="month" selected>Tháng này</option>
+                                <option value="quarter">Quý này</option>
+                                <option value="year">Năm nay</option>
+                            </select>
+                        </div>
+                    </div>
+                    <canvas id="healthCheckupChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Phân bố bệnh lý</h2>
+                        <div class="chart-controls">
+                            <select id="diseaseFilter">
+                                <option value="all" selected>Tất cả</option>
+                                <option value="common">Bệnh thường gặp</option>
+                                <option value="chronic">Bệnh mãn tính</option>
+                            </select>
+                        </div>
+                    </div>
+                    <canvas id="diseaseDistributionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Reports Section -->
+            <div class="reports-section">
+                <div class="section-header">
+                    <h2>Báo cáo chi tiết</h2>
+                    <div class="report-actions">
+                        <button class="btn btn-primary" id="generateReport">
+                            <i class="fas fa-file-export"></i> Xuất báo cáo
+                        </button>
+                        <button class="btn btn-secondary" id="printReport">
+                            <i class="fas fa-print"></i> In báo cáo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="reports-grid">
+                    <!-- Health Checkup Report -->
+                    <div class="report-card">
+                        <div class="report-icon blue">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="report-content">
+                            <h3>Báo cáo khám sức khỏe</h3>
+                            <p>Thống kê chi tiết về các buổi khám sức khỏe định kỳ</p>
+                            <div class="report-meta">
+                                <span><i class="far fa-calendar"></i> Cập nhật: 15/03/2024</span>
+                                <span><i class="far fa-file-pdf"></i> PDF</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-sm">Xem chi tiết</button>
+                    </div>
+
+                    <!-- Vaccination Report -->
+                    <div class="report-card">
+                        <div class="report-icon green">
+                            <i class="fas fa-syringe"></i>
+                        </div>
+                        <div class="report-content">
+                            <h3>Báo cáo tiêm chủng</h3>
+                            <p>Thống kê về lịch sử và kế hoạch tiêm chủng</p>
+                            <div class="report-meta">
+                                <span><i class="far fa-calendar"></i> Cập nhật: 14/03/2024</span>
+                                <span><i class="far fa-file-pdf"></i> PDF</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-sm">Xem chi tiết</button>
+                    </div>
+
+                    <!-- Medical Consultation Report -->
+                    <div class="report-card">
+                        <div class="report-icon orange">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="report-content">
+                            <h3>Báo cáo tư vấn y tế</h3>
+                            <p>Thống kê về các buổi tư vấn và giải đáp thắc mắc</p>
+                            <div class="report-meta">
+                                <span><i class="far fa-calendar"></i> Cập nhật: 13/03/2024</span>
+                                <span><i class="far fa-file-pdf"></i> PDF</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-sm">Xem chi tiết</button>
+                    </div>
+
+                    <!-- Emergency Report -->
+                    <div class="report-card">
+                        <div class="report-icon red">
+                            <i class="fas fa-ambulance"></i>
+                        </div>
+                        <div class="report-content">
+                            <h3>Báo cáo cấp cứu</h3>
+                            <p>Thống kê về các trường hợp cấp cứu và xử lý</p>
+                            <div class="report-meta">
+                                <span><i class="far fa-calendar"></i> Cập nhật: 12/03/2024</span>
+                                <span><i class="far fa-file-pdf"></i> PDF</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-sm">Xem chi tiết</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="logo">
+                    <img src="images/imagez/LOGO_Health.png" alt="SchoolHealth Logo">          
+                    <span>SchoolHealth</span>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Giải pháp</h4>
+                        <a href="#">Trường K-12</a>
+                        <a href="#">Trung tâm Y tế</a>
+                        <a href="#">Đại học</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Tài nguyên</h4>
+                        <a href="#">Blog</a>
+                        <a href="#">Nghiên cứu điển hình</a>
+                        <a href="#">Hướng dẫn</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Công ty</h4>
+                        <a href="#">Về chúng tôi</a>
+                        <a href="#">Cơ hội nghề nghiệp</a>
+                        <a href="#">Liên hệ</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Pháp lý</h4>
+                        <a href="#">Chính sách Bảo mật</a>
+                        <a href="#">Điều khoản Dịch vụ</a>
+                        <a href="#">Tuân thủ HIPAA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SchoolHealth. Bảo lưu mọi quyền.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Report Detail Modal -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Chi tiết báo cáo</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="report-detail-header">
+                    <div class="report-info">
+                        <div class="report-meta">
+                            <span><i class="far fa-calendar"></i> Cập nhật: <span id="modalUpdateDate"></span></span>
+                            <span><i class="far fa-file-pdf"></i> <a href="#" id="modalPdfLink">Tải PDF</a></span>
+                        </div>
+                    </div>
+                    <div class="report-filters">
+                        <select id="modalTimeRange">
+                            <option value="week">Tuần này</option>
+                            <option value="month" selected>Tháng này</option>
+                            <option value="quarter">Quý này</option>
+                            <option value="year">Năm nay</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="report-detail-content">
+                    <div class="detail-chart-container">
+                        <canvas id="detailChart"></canvas>
+                    </div>
+                    
+                    <div class="detail-stats-grid">
+                        <div class="detail-stat-card">
+                            <h4>Tổng số</h4>
+                            <p id="modalTotalCount">0</p>
+                        </div>
+                        <div class="detail-stat-card">
+                            <h4>Tăng so với kỳ trước</h4>
+                            <p id="modalGrowthRate">0%</p>
+                        </div>
+                        <div class="detail-stat-card">
+                            <h4>Trung bình/ngày</h4>
+                            <p id="modalDailyAvg">0</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-table-container">
+                        <h3>Danh sách chi tiết</h3>
+                        <table class="detail-table">
+                            <thead>
+                                <tr>
+                                    <th>Ngày</th>
+                                    <th>Số lượng</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ghi chú</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modalTableBody">
+                                <!-- Table rows will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="modalPrintBtn">
+                    <i class="fas fa-print"></i> In báo cáo
+                </button>
+                <button class="btn btn-primary" id="modalExportBtn">
+                    <i class="fas fa-file-export"></i> Xuất Excel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            margin: 2% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 1200px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #666;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        .report-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .detail-chart-container {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            height: 300px;
+        }
+
+        .detail-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-stat-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .detail-stat-card h4 {
+            margin: 0 0 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .detail-stat-card p {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .detail-table-container {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .detail-table-container h3 {
+            margin: 0 0 1rem;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .detail-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .detail-table th,
+        .detail-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .detail-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .report-detail-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .detail-stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Health Checkup Chart
+            const healthCheckupCtx = document.getElementById('healthCheckupChart').getContext('2d');
+            const healthCheckupChart = new Chart(healthCheckupCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+                    datasets: [{
+                        label: 'Số ca khám',
+                        data: [65, 59, 80, 81],
+                        borderColor: '#1e88e5',
+                        backgroundColor: 'rgba(30, 136, 229, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Disease Distribution Chart
+            const diseaseDistributionCtx = document.getElementById('diseaseDistributionChart').getContext('2d');
+            const diseaseDistributionChart = new Chart(diseaseDistributionCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Cảm cúm', 'Đau đầu', 'Dị ứng', 'Khác'],
+                    datasets: [{
+                        data: [35, 25, 20, 20],
+                        backgroundColor: [
+                            '#1e88e5',
+                            '#43a047',
+                            '#fb8c00',
+                            '#e53935'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+
+            // Time Range Change Handler
+            document.getElementById('timeRange').addEventListener('change', function(e) {
+                // Update chart data based on selected time range
+                console.log('Time range changed:', e.target.value);
+                // Here you would typically fetch new data and update the chart
+            });
+
+            // Disease Filter Change Handler
+            document.getElementById('diseaseFilter').addEventListener('change', function(e) {
+                // Update chart data based on selected filter
+                console.log('Disease filter changed:', e.target.value);
+                // Here you would typically fetch new data and update the chart
+            });
+
+            // Generate Report Button Handler
+            document.getElementById('generateReport').addEventListener('click', function() {
+                // Implement report generation logic
+                alert('Đang tạo báo cáo...');
+            });
+
+            // Print Report Button Handler
+            document.getElementById('printReport').addEventListener('click', function() {
+                window.print();
+            });
+
+            // Logout functionality
+            const logoutBtn = document.querySelector('.logout-btn');
+            logoutBtn.addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+
+            // Modal functionality
+            const modal = document.getElementById('reportModal');
+            const closeModal = document.querySelector('.close-modal');
+            const reportCards = document.querySelectorAll('.report-card .btn-secondary');
+            let detailChart = null;
+
+            // Sample data for different report types
+            const reportData = {
+                'health-checkup': {
+                    title: 'Báo cáo khám sức khỏe',
+                    updateDate: '15/03/2024',
+                    totalCount: 456,
+                    growthRate: '+2.1%',
+                    dailyAvg: 15.2,
+                    chartData: {
+                        labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+                        data: [65, 59, 80, 81]
+                    },
+                    tableData: [
+                        { date: '15/03/2024', count: 25, status: 'Hoàn thành', note: 'Khám định kỳ lớp 3A' },
+                        { date: '14/03/2024', count: 18, status: 'Hoàn thành', note: 'Khám định kỳ lớp 3B' },
+                        { date: '13/03/2024', count: 22, status: 'Hoàn thành', note: 'Khám định kỳ lớp 4A' },
+                        { date: '12/03/2024', count: 20, status: 'Hoàn thành', note: 'Khám định kỳ lớp 4B' }
+                    ]
+                },
+                'vaccination': {
+                    title: 'Báo cáo tiêm chủng',
+                    updateDate: '14/03/2024',
+                    totalCount: 89,
+                    growthRate: '-1.5%',
+                    dailyAvg: 3.2,
+                    chartData: {
+                        labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+                        data: [25, 30, 20, 14]
+                    },
+                    tableData: [
+                        { date: '14/03/2024', count: 15, status: 'Hoàn thành', note: 'Tiêm phòng cúm' },
+                        { date: '13/03/2024', count: 12, status: 'Hoàn thành', note: 'Tiêm phòng sởi' },
+                        { date: '12/03/2024', count: 18, status: 'Hoàn thành', note: 'Tiêm phòng viêm não' },
+                        { date: '11/03/2024', count: 10, status: 'Hoàn thành', note: 'Tiêm phòng thủy đậu' }
+                    ]
+                },
+                'consultation': {
+                    title: 'Báo cáo tư vấn y tế',
+                    updateDate: '13/03/2024',
+                    totalCount: 156,
+                    growthRate: '+5.2%',
+                    dailyAvg: 5.2,
+                    chartData: {
+                        labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+                        data: [35, 42, 38, 41]
+                    },
+                    tableData: [
+                        { date: '13/03/2024', count: 12, status: 'Đã trả lời', note: 'Tư vấn dinh dưỡng' },
+                        { date: '12/03/2024', count: 15, status: 'Đã trả lời', note: 'Tư vấn sức khỏe' },
+                        { date: '11/03/2024', count: 10, status: 'Đã trả lời', note: 'Tư vấn tâm lý' },
+                        { date: '10/03/2024', count: 8, status: 'Đã trả lời', note: 'Tư vấn vệ sinh' }
+                    ]
+                },
+                'emergency': {
+                    title: 'Báo cáo cấp cứu',
+                    updateDate: '12/03/2024',
+                    totalCount: 23,
+                    growthRate: '-2.5%',
+                    dailyAvg: 0.8,
+                    chartData: {
+                        labels: ['Tuần 1', 'Tuần 2', 'Tuần 3', 'Tuần 4'],
+                        data: [8, 5, 6, 4]
+                    },
+                    tableData: [
+                        { date: '12/03/2024', count: 2, status: 'Đã xử lý', note: 'Chấn thương thể thao' },
+                        { date: '11/03/2024', count: 1, status: 'Đã xử lý', note: 'Sốt cao' },
+                        { date: '10/03/2024', count: 3, status: 'Đã xử lý', note: 'Dị ứng thức ăn' },
+                        { date: '09/03/2024', count: 2, status: 'Đã xử lý', note: 'Đau bụng' }
+                    ]
+                }
+            };
+
+            // Open modal with report details
+            reportCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const reportCard = this.closest('.report-card');
+                    const reportType = reportCard.querySelector('.report-icon').classList.contains('blue') ? 'health-checkup' :
+                                     reportCard.querySelector('.report-icon').classList.contains('green') ? 'vaccination' :
+                                     reportCard.querySelector('.report-icon').classList.contains('orange') ? 'consultation' : 'emergency';
+                    
+                    const data = reportData[reportType];
+                    
+                    // Update modal content
+                    document.getElementById('modalTitle').textContent = data.title;
+                    document.getElementById('modalUpdateDate').textContent = data.updateDate;
+                    document.getElementById('modalTotalCount').textContent = data.totalCount;
+                    document.getElementById('modalGrowthRate').textContent = data.growthRate;
+                    document.getElementById('modalDailyAvg').textContent = data.dailyAvg;
+
+                    // Update table
+                    const tableBody = document.getElementById('modalTableBody');
+                    tableBody.innerHTML = '';
+                    data.tableData.forEach(row => {
+                        tableBody.innerHTML += `
+                            <tr>
+                                <td>${row.date}</td>
+                                <td>${row.count}</td>
+                                <td>${row.status}</td>
+                                <td>${row.note}</td>
+                            </tr>
+                        `;
+                    });
+
+                    // Update chart
+                    if (detailChart) {
+                        detailChart.destroy();
+                    }
+                    const ctx = document.getElementById('detailChart').getContext('2d');
+                    detailChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.chartData.labels,
+                            datasets: [{
+                                label: 'Số lượng',
+                                data: data.chartData.data,
+                                borderColor: '#1e88e5',
+                                backgroundColor: 'rgba(30, 136, 229, 0.1)',
+                                tension: 0.4,
+                                fill: true
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+
+                    modal.style.display = 'block';
+                });
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Modal time range change handler
+            document.getElementById('modalTimeRange').addEventListener('change', function(e) {
+                // Here you would typically fetch new data based on the selected time range
+                console.log('Modal time range changed:', e.target.value);
+            });
+
+            // Modal print button handler
+            document.getElementById('modalPrintBtn').addEventListener('click', function() {
+                window.print();
+            });
+
+            // Modal export button handler
+            document.getElementById('modalExportBtn').addEventListener('click', function() {
+                alert('Đang xuất báo cáo ra Excel...');
+            });
+        });
+    </script>
+</body>
+</html> 

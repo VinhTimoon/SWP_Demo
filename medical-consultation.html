@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tư Vấn Y Tế - SchoolHealth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/medical-consultation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <div><i class="fas fa-map-marker-alt"></i>Đại học FPT Campus HCM</div>
+                    <div><i class="fas fa-phone-alt"></i> +84 123 999 9999</div>
+                    <div><i class="fas fa-envelope"></i> fptDaiGaKu@schoolhealthsystem.com</div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="images/imagez/LOGO_Health.png" alt="SchoolHealth Logo">
+                    <span>SchoolHealth</span>
+                </a>
+                <div class="nav-links">
+                    <a href="dashboard.html">Bảng điều khiển</a>
+                    <a href="news.html">Tin tức</a>
+                    <a href="partners.html">Đối tác</a>
+                    <a href="contact.html">Liên hệ</a>
+                </div>
+                <div class="user-profile">
+                    <span>Y tá học đường</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <button class="logout-btn">Đăng xuất</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <ul class="breadcrumb">
+                        <li><a href="dashboard.html">Bảng điều khiển</a></li>
+                        <li>Tư vấn y tế</li>
+                    </ul>
+                    <h1 class="page-title">Tư Vấn Y Tế</h1>
+                    <p class="page-description">Quản lý và trả lời các câu hỏi tư vấn sức khỏe từ học sinh và phụ huynh</p>
+                </div>
+                <div class="header-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="dashboard-main">
+        <div class="container">
+            <!-- Consultation Stats -->
+            <div class="consultation-stats">
+                <div class="stat-card">
+                    <div class="icon blue">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>12</h3>
+                    <p>Câu hỏi mới</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="icon light-green">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>45</h3>
+                    <p>Đã trả lời</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="icon light-orange">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>8</h3>
+                    <p>Đang chờ xử lý</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="icon light-purple">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>4.8</h3>
+                    <p>Đánh giá trung bình</p>
+                </div>
+            </div>
+
+            <!-- Consultation List -->
+            <div class="consultation-list">
+                <div class="section-header">
+                    <h2>Danh sách câu hỏi</h2>
+                    <div class="filter-options">
+                        <select id="filter-status">
+                            <option value="all">Tất cả trạng thái</option>
+                            <option value="new">Câu hỏi mới</option>
+                            <option value="pending">Đang xử lý</option>
+                            <option value="answered">Đã trả lời</option>
+                        </select>
+                        <select id="filter-category">
+                            <option value="all">Tất cả danh mục</option>
+                            <option value="general">Sức khỏe tổng quát</option>
+                            <option value="nutrition">Dinh dưỡng</option>
+                            <option value="mental">Sức khỏe tâm thần</option>
+                            <option value="emergency">Cấp cứu</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="consultation-items">
+                    <!-- Câu hỏi mới -->
+                    <div class="consultation-item new">
+                        <div class="item-header">
+                            <div class="user-info">
+                                <div class="avatar">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <div>
+                                    <h4>Nguyễn Văn A</h4>
+                                    <span class="meta">Lớp 10A - 10 phút trước</span>
+                                </div>
+                            </div>
+                            <span class="status-badge new">Mới</span>
+                        </div>
+                        <div class="item-content">
+                            <h3>Em bị đau đầu và sốt nhẹ, có nên đi khám không?</h3>
+                            <p>Em bị đau đầu và sốt 37.5 độ từ sáng nay, không biết có nên đến phòng y tế khám không ạ?</p>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-primary">Trả lời</button>
+                            <button class="btn btn-secondary">Chuyển tiếp</button>
+                        </div>
+                    </div>
+
+                    <!-- Câu hỏi đã trả lời -->
+                    <div class="consultation-item answered">
+                        <div class="item-header">
+                            <div class="user-info">
+                                <div class="avatar">
+                                    <i class="fas fa-user-friends"></i>
+                                </div>
+                                <div>
+                                    <h4>Phụ huynh Lê Thị B</h4>
+                                    <span class="meta">Phụ huynh lớp 8B - 1 giờ trước</span>
+                                </div>
+                            </div>
+                            <span class="status-badge answered">Đã trả lời</span>
+                        </div>
+                        <div class="item-content">
+                            <h3>Chế độ dinh dưỡng cho học sinh cấp 2</h3>
+                            <p>Con tôi đang học lớp 8, xin hỏi chế độ dinh dưỡng phù hợp cho lứa tuổi này như thế nào?</p>
+                            <div class="answer">
+                                <strong>Trả lời:</strong>
+                                <p>Chào chị, với học sinh cấp 2, chế độ dinh dưỡng cần đảm bảo đầy đủ các nhóm chất...</p>
+                            </div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-secondary">Chỉnh sửa</button>
+                            <button class="btn btn-danger">Xóa</button>
+                        </div>
+                    </div>
+
+                    <!-- Câu hỏi đang xử lý -->
+                    <div class="consultation-item pending">
+                        <div class="item-header">
+                            <div class="user-info">
+                                <div class="avatar">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <div>
+                                    <h4>Trần Văn C</h4>
+                                    <span class="meta">Lớp 11C - 2 giờ trước</span>
+                                </div>
+                            </div>
+                            <span class="status-badge pending">Đang xử lý</span>
+                        </div>
+                        <div class="item-content">
+                            <h3>Vấn đề về giấc ngủ</h3>
+                            <p>Em thường xuyên bị mất ngủ và khó tập trung vào buổi sáng, có cách nào khắc phục không ạ?</p>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn btn-primary">Tiếp tục trả lời</button>
+                            <button class="btn btn-secondary">Chuyển tiếp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="logo">
+                    <img src="images/imagez/LOGO_Health.png" alt="SchoolHealth Logo">          
+                    <span>SchoolHealth</span>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Giải pháp</h4>
+                        <a href="#">Trường K-12</a>
+                        <a href="#">Trung tâm Y tế</a>
+                        <a href="#">Đại học</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Tài nguyên</h4>
+                        <a href="#">Blog</a>
+                        <a href="#">Nghiên cứu điển hình</a>
+                        <a href="#">Hướng dẫn</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Công ty</h4>
+                        <a href="#">Về chúng tôi</a>
+                        <a href="#">Cơ hội nghề nghiệp</a>
+                        <a href="#">Liên hệ</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Pháp lý</h4>
+                        <a href="#">Chính sách Bảo mật</a>
+                        <a href="#">Điều khoản Dịch vụ</a>
+                        <a href="#">Tuân thủ HIPAA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SchoolHealth. Bảo lưu mọi quyền.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Reply Modal -->
+    <div id="replyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Trả lời câu hỏi</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="question-preview">
+                    <h3>Câu hỏi:</h3>
+                    <div class="preview-content">
+                        <p class="question-text"></p>
+                        <div class="question-meta">
+                            <span class="asker-name"></span>
+                            <span class="asker-info"></span>
+                        </div>
+                    </div>
+                </div>
+                <form id="replyForm">
+                    <div class="form-group">
+                        <label for="replyCategory">Danh mục</label>
+                        <select id="replyCategory" required>
+                            <option value="general">Sức khỏe tổng quát</option>
+                            <option value="nutrition">Dinh dưỡng</option>
+                            <option value="mental">Sức khỏe tâm thần</option>
+                            <option value="emergency">Cấp cứu</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="replyContent">Nội dung trả lời</label>
+                        <textarea id="replyContent" rows="6" required placeholder="Nhập nội dung trả lời..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="replyNotes">Ghi chú nội bộ (không hiển thị với người hỏi)</label>
+                        <textarea id="replyNotes" rows="3" placeholder="Thêm ghi chú nếu cần..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelReply">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Gửi trả lời</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterStatus = document.getElementById('filter-status');
+            const filterCategory = document.getElementById('filter-category');
+            const modal = document.getElementById('replyModal');
+            const closeModal = document.querySelector('.close-modal');
+            const cancelReply = document.getElementById('cancelReply');
+            const replyForm = document.getElementById('replyForm');
+            let currentQuestionId = null;
+
+            function applyFilters() {
+                // Implement filter logic here
+                console.log('Filtering by:', filterStatus.value, filterCategory.value);
+            }
+
+            filterStatus.addEventListener('change', applyFilters);
+            filterCategory.addEventListener('change', applyFilters);
+
+            // Modal functionality
+            function openReplyModal(questionId, questionText, askerName, askerInfo) {
+                currentQuestionId = questionId;
+                document.querySelector('.question-text').textContent = questionText;
+                document.querySelector('.asker-name').textContent = askerName;
+                document.querySelector('.asker-info').textContent = askerInfo;
+                modal.style.display = 'block';
+                document.getElementById('replyContent').focus();
+            }
+
+            function closeReplyModal() {
+                modal.style.display = 'none';
+                replyForm.reset();
+                currentQuestionId = null;
+            }
+
+            // Add click event to all reply buttons
+            document.querySelectorAll('.btn-primary').forEach(button => {
+                if (button.textContent.includes('Trả lời') || button.textContent.includes('Tiếp tục trả lời')) {
+                    button.addEventListener('click', function() {
+                        const item = this.closest('.consultation-item');
+                        const questionText = item.querySelector('.item-content h3').textContent;
+                        const askerName = item.querySelector('.user-info h4').textContent;
+                        const askerInfo = item.querySelector('.meta').textContent;
+                        const questionId = item.dataset.id || 'temp-' + Date.now();
+                        openReplyModal(questionId, questionText, askerName, askerInfo);
+                    });
+                }
+            });
+
+            closeModal.addEventListener('click', closeReplyModal);
+            cancelReply.addEventListener('click', closeReplyModal);
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeReplyModal();
+                }
+            });
+
+            // Handle form submission
+            replyForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const category = document.getElementById('replyCategory').value;
+                const content = document.getElementById('replyContent').value;
+                const notes = document.getElementById('replyNotes').value;
+
+                // Here you would typically send this data to your backend
+                console.log('Sending reply:', {
+                    questionId: currentQuestionId,
+                    category,
+                    content,
+                    notes
+                });
+
+                // Simulate successful reply
+                alert('Đã gửi trả lời thành công!');
+                closeReplyModal();
+
+                // Update the UI to show the answer
+                const questionItem = document.querySelector(`.consultation-item[data-id="${currentQuestionId}"]`);
+                if (questionItem) {
+                    questionItem.classList.remove('new', 'pending');
+                    questionItem.classList.add('answered');
+                    questionItem.querySelector('.status-badge').className = 'status-badge answered';
+                    questionItem.querySelector('.status-badge').textContent = 'Đã trả lời';
+                    
+                    const contentDiv = questionItem.querySelector('.item-content');
+                    const answerDiv = document.createElement('div');
+                    answerDiv.className = 'answer';
+                    answerDiv.innerHTML = `
+                        <strong>Trả lời:</strong>
+                        <p>${content}</p>
+                    `;
+                    contentDiv.appendChild(answerDiv);
+
+                    const actionsDiv = questionItem.querySelector('.item-actions');
+                    actionsDiv.innerHTML = `
+                        <button class="btn btn-secondary">Chỉnh sửa</button>
+                        <button class="btn btn-danger">Xóa</button>
+                    `;
+                }
+            });
+
+            // Logout functionality
+            const logoutBtn = document.querySelector('.logout-btn');
+            logoutBtn.addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html> 
