@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sự kiện Y tế - SchoolHealth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        .medical-event-form {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+
+        .student-search {
+            margin-bottom: 20px;
+        }
+
+        .student-search input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .student-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .student-info.active {
+            display: block;
+        }
+
+        .student-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .info-item label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .info-item span {
+            color: #666;
+        }
+
+        .emergency-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .severity-level {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .severity-option {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .severity-option:hover {
+            border-color: var(--primary-color);
+        }
+
+        .severity-option.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #1976d2;
+        }
+
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .emergency-list {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .emergency-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .emergency-table th,
+        .emergency-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .emergency-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .emergency-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .status-critical {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+
+        .status-serious {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .status-moderate {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+
+        .status-resolved {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <div><i class="fas fa-map-marker-alt"></i>Đại học FPT Campus HCM</div>
+                    <div><i class="fas fa-phone-alt"></i> +84 123 999 9999</div>
+                    <div><i class="fas fa-envelope"></i> fptDaiGaKu@schoolhealthsystem.com</div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="images/imagez/LOGO_Health.png" alt="SchoolHealth Logo">
+                    <span>SchoolHealth</span>
+                </a>
+                <div class="nav-links">
+                    <a href="dashboard.html">Bảng điều khiển</a>
+                    <a href="news.html">Tin tức</a>
+                    <a href="partners.html">Đối tác</a>
+                    <a href="contact.html">Liên hệ</a>
+                </div>
+                <div class="user-profile">
+                    <span>Y tá học đường</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <button class="logout-btn">Đăng xuất</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="dashboard.html">Bảng điều khiển</a></li>
+                <li>Sự kiện y tế</li>
+            </ul>
+            <h1>Sự kiện Y tế</h1>
+            <p>Ghi nhận và quản lý các sự kiện y tế khẩn cấp trong trường học</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="dashboard-main">
+        <div class="container">
+            <!-- Emergency Event Form -->
+            <div class="medical-event-form">
+                <h2>Ghi nhận sự kiện y tế mới</h2>
+                <div class="student-search">
+                    <input type="text" id="student-search" placeholder="Nhập tên học sinh để tìm kiếm...">
+                </div>
+
+                <div class="student-info" id="student-info">
+                    <h3>Thông tin học sinh</h3>
+                    <div class="student-info-grid">
+                        <div class="info-item">
+                            <label>Họ và tên:</label>
+                            <span id="student-name">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Lớp:</label>
+                            <span id="student-class">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Số điện thoại phụ huynh:</label>
+                            <span id="parent-phone">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Email phụ huynh:</label>
+                            <span id="parent-email">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="emergency-form" class="emergency-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-type">Loại sự kiện</label>
+                            <select id="event-type" required>
+                                <option value="">-- Chọn loại sự kiện --</option>
+                                <option value="injury">Chấn thương</option>
+                                <option value="illness">Bệnh tật</option>
+                                <option value="allergy">Dị ứng</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Mức độ nghiêm trọng</label>
+                            <div class="severity-level">
+                                <div class="severity-option" data-level="critical">Nghiêm trọng</div>
+                                <div class="severity-option" data-level="serious">Khẩn cấp</div>
+                                <div class="severity-option" data-level="moderate">Trung bình</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="symptoms">Triệu chứng/Biểu hiện</label>
+                        <textarea id="symptoms" required placeholder="Mô tả chi tiết các triệu chứng hoặc biểu hiện của học sinh..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="actions">Hành động đã thực hiện</label>
+                        <textarea id="actions" required placeholder="Mô tả các hành động đã thực hiện để xử lý sự kiện..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Ghi chú thêm</label>
+                        <textarea id="notes" placeholder="Thông tin bổ sung nếu cần..."></textarea>
+                    </div>
+
+                    <div class="actions">
+                        <button type="button" class="btn btn-secondary" id="cancel-btn">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Ghi nhận sự kiện</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Emergency Events List -->
+            <div class="emergency-list">
+                <div class="section-header">
+                    <h2>Sự kiện y tế gần đây</h2>
+                    <span class="view-all">Xem tất cả</span>
+                </div>
+
+                <table class="emergency-table">
+                    <thead>
+                        <tr>
+                            <th>Thời gian</th>
+                            <th>Học sinh</th>
+                            <th>Loại sự kiện</th>
+                            <th>Mức độ</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>18/05/2025 14:30</td>
+                            <td>Nguyễn Văn A - Lớp 3A</td>
+                            <td>Chấn thương</td>
+                            <td><span class="emergency-status status-critical">Nghiêm trọng</span></td>
+                            <td><span class="emergency-status status-resolved">Đã xử lý</span></td>
+                            <td>
+                                <button class="btn btn-secondary btn-sm">Chi tiết</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>18/05/2025 10:15</td>
+                            <td>Trần Thị B - Lớp 4B</td>
+                            <td>Dị ứng</td>
+                            <td><span class="emergency-status status-serious">Khẩn cấp</span></td>
+                            <td><span class="emergency-status status-resolved">Đã xử lý</span></td>
+                            <td>
+                                <button class="btn btn-secondary btn-sm">Chi tiết</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="logo">
+                    <img src="images/imagez/LOGO_Health.png" alt="SchoolHealth Logo">          
+                    <span>SchoolHealth</span>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Giải pháp</h4>
+                        <a href="#">Trường K-12</a>
+                        <a href="#">Trung tâm Y tế</a>
+                        <a href="#">Đại học</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Tài nguyên</h4>
+                        <a href="#">Blog</a>
+                        <a href="#">Nghiên cứu điển hình</a>
+                        <a href="#">Hướng dẫn</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Công ty</h4>
+                        <a href="#">Về chúng tôi</a>
+                        <a href="#">Cơ hội nghề nghiệp</a>
+                        <a href="#">Liên hệ</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Pháp lý</h4>
+                        <a href="#">Chính sách Bảo mật</a>
+                        <a href="#">Điều khoản Dịch vụ</a>
+                        <a href="#">Tuân thủ HIPAA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SchoolHealth. Bảo lưu mọi quyền.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Student search functionality
+            const studentSearch = document.getElementById('student-search');
+            const studentInfo = document.getElementById('student-info');
+            
+            // Mock student database
+            const students = {
+                'Nguyễn Văn A': {
+                    class: '3A',
+                    parentPhone: '0987654321',
+                    parentEmail: 'parent.a@email.com'
+                },
+                'Trần Thị B': {
+                    class: '4B',
+                    parentPhone: '0123456789',
+                    parentEmail: 'parent.b@email.com'
+                }
+            };
+
+            studentSearch.addEventListener('input', function() {
+                const searchValue = this.value.trim();
+                if (searchValue in students) {
+                    // Show student info
+                    document.getElementById('student-name').textContent = searchValue;
+                    document.getElementById('student-class').textContent = students[searchValue].class;
+                    document.getElementById('parent-phone').textContent = students[searchValue].parentPhone;
+                    document.getElementById('parent-email').textContent = students[searchValue].parentEmail;
+                    studentInfo.classList.add('active');
+                } else {
+                    studentInfo.classList.remove('active');
+                }
+            });
+
+            // Severity level selection
+            const severityOptions = document.querySelectorAll('.severity-option');
+            severityOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    severityOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            // Form submission
+            const emergencyForm = document.getElementById('emergency-form');
+            emergencyForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (!studentInfo.classList.contains('active')) {
+                    alert('Vui lòng chọn học sinh từ danh sách!');
+                    return;
+                }
+
+                const selectedSeverity = document.querySelector('.severity-option.selected');
+                if (!selectedSeverity) {
+                    alert('Vui lòng chọn mức độ nghiêm trọng!');
+                    return;
+                }
+
+                // Simulate form submission
+                alert('Đã ghi nhận sự kiện y tế thành công!');
+                this.reset();
+                studentInfo.classList.remove('active');
+                severityOptions.forEach(opt => opt.classList.remove('selected'));
+            });
+
+            // Cancel button
+            document.getElementById('cancel-btn').addEventListener('click', function() {
+                if (confirm('Bạn có chắc muốn hủy? Mọi thông tin sẽ không được lưu.')) {
+                    emergencyForm.reset();
+                    studentInfo.classList.remove('active');
+                    severityOptions.forEach(opt => opt.classList.remove('selected'));
+                }
+            });
+
+            // Logout functionality
+            const logoutBtn = document.querySelector('.logout-btn');
+            logoutBtn.addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html> 

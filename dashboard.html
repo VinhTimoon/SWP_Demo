@@ -132,6 +132,14 @@
                     <h3>Báo cáo và thống kê</h3>
                     <p>Xem thống kê và xuất báo cáo sức khỏe</p>
                 </div>
+
+                <div class="action-card">
+                    <div class="icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Sự kiện y tế</h3>
+                    <p>Quản lý và theo dõi các sự kiện y tế trong trường</p>
+                </div>
             </div>
 
             <!-- Recent Activities -->
@@ -307,6 +315,9 @@
                     if (index === 0) {
                         // First card - "Thêm học sinh mới"
                         window.location.href = 'add-student.html';
+                    } else if (index === 3) {
+                        // Fourth card - "Sự kiện y tế"
+                        window.location.href = 'medical-events.html';
                     } else {
                         alert('Tính năng này đang được phát triển!');
                     }
