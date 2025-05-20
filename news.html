@@ -382,8 +382,14 @@
         </form>
         <form id="login-form-parent" class="login-form hidden">
           <label for="parent-phone">Số điện thoại</label>
-          <input type="tel" id="parent-phone" name="parent-phone" required pattern="[0-9]{10,11}">
-          <button type="submit">Đăng nhập</button>
+          <input type="tel" id="parent-phone" name="parent-phone" required pattern="[0-9]{10,11}" placeholder="Nhập số điện thoại">
+          <div class="otp-input-row">
+            <input type="text" id="parent-otp" name="parent-otp" required pattern="[0-9]{6}" maxlength="6" placeholder="Nhập mã OTP">
+            <button type="button" id="send-otp-btn" class="send-otp-btn">
+              <i class="fas fa-paper-plane"></i> Gửi OTP
+            </button>
+          </div>
+          <button type="submit" id="parent-login-btn">Đăng nhập</button>
         </form>
         <form id="login-form-student" class="login-form hidden">
           <label for="student-username">Tài khoản</label>

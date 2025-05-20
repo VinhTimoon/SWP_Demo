@@ -2013,3 +2013,44 @@ footer {
         font-size: 1rem;
     }
 }
+
+.otp-input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.otp-input-row input[type="text"] {
+  flex: 2;
+  text-align: center;
+  font-size: 1.1rem;
+  border-radius: 6px;
+}
+.send-otp-btn {
+  flex: 1;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 1rem;
+  padding: 0 12px;
+}
+.send-otp-btn:hover {
+  background: #1565c0;
+}
+@media (max-width: 480px) {
+  .otp-input-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .send-otp-btn {
+    width: 100%;
+    padding: 10px 0;
+  }
+}
