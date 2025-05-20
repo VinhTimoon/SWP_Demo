@@ -154,4 +154,107 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = 'dashboard.html';
         });
     });
+
+    // Handle forgot password links
+    const forgotPasswordManager = document.getElementById('forgot-password-manager');
+    const forgotPasswordStudent = document.getElementById('forgot-password-student');
+
+    if (forgotPasswordManager) {
+        forgotPasswordManager.addEventListener('click', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('manager-username').value;
+            if (!username) {
+                alert('Vui lòng nhập tên tài khoản để khôi phục mật khẩu');
+                return;
+            }
+            // TODO: Implement password reset logic for manager
+            alert('Yêu cầu khôi phục mật khẩu đã được gửi. Vui lòng kiểm tra email của bạn.');
+        });
+    }
+
+    if (forgotPasswordStudent) {
+        forgotPasswordStudent.addEventListener('click', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('student-username').value;
+            if (!username) {
+                alert('Vui lòng nhập tên tài khoản để khôi phục mật khẩu');
+                return;
+            }
+            // TODO: Implement password reset logic for student
+            alert('Yêu cầu khôi phục mật khẩu đã được gửi. Vui lòng kiểm tra email của bạn.');
+        });
+    }
+
+    // Forgot Password Popup Functionality
+    const forgotPasswordLinks = document.querySelectorAll('.forgot-password-link');
+    const forgotPasswordPopup = document.getElementById('forgot-password-popup');
+    const closeForgotPassword = document.getElementById('close-forgot-password');
+    const backToLoginLink = document.getElementById('back-to-login-link');
+    const backToLoginBtn = document.getElementById('back-to-login');
+    const resendCodeBtn = document.getElementById('resend-code');
+
+    // Steps
+    const step1 = document.getElementById('forgot-password-step1');
+    const step2 = document.getElementById('forgot-password-step2');
+    const step3 = document.getElementById('forgot-password-step3');
+    const step4 = document.getElementById('forgot-password-step4');
+
+    // Forms
+    const formStep1 = document.getElementById('forgot-password-form-step1');
+    const formStep2 = document.getElementById('forgot-password-form-step2');
+    const formStep3 = document.getElementById('forgot-password-form-step3');
+
+    // Timer variables
+    let verificationTimer;
+    let timeLeft = 300; // 5 minutes in seconds
+
+    // Show forgot password popup and hide login popup
+    forgotPasswordLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginPopup.classList.add('hidden'); // Hide login popup
+            forgotPasswordPopup.classList.remove('hidden'); // Show forgot password popup
+        });
+    });
+
+    // Close forgot password popup
+    if (closeForgotPassword) {
+        closeForgotPassword.addEventListener('click', () => {
+            forgotPasswordPopup.classList.add('hidden');
+        });
+    }
+
+    // Back to login
+    if (backToLogin) {
+        backToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            forgotPasswordPopup.classList.add('hidden');
+            loginPopup.classList.remove('hidden'); // Show login popup again
+        });
+    }
+
+    // Handle forgot password form submission
+    if (forgotPasswordForm) {
+        forgotPasswordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('forgot-username').value;
+            
+            // Here you would typically make an API call to your backend
+            // For now, we'll just show a success message
+            alert(`Yêu cầu khôi phục mật khẩu đã được gửi cho tài khoản: ${username}\nVui lòng kiểm tra email của bạn.`);
+            
+            // Reset form and close popup
+            forgotPasswordForm.reset();
+            forgotPasswordPopup.classList.add('hidden');
+        });
+    }
+
+    // Close popup when clicking outside
+    if (forgotPasswordPopup) {
+        window.addEventListener('click', (e) => {
+            if (e.target === forgotPasswordPopup) {
+                forgotPasswordPopup.classList.add('hidden');
+            }
+        });
+    }
 });

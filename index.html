@@ -389,6 +389,7 @@
           <input type="text" id="manager-username" name="manager-username" required>
           <label for="manager-password">Mật khẩu</label>
           <input type="password" id="manager-password" name="manager-password" required>
+          <a href="#" class="forgot-password-link" id="forgot-password-manager">Quên mật khẩu?</a>
           <button type="submit">Đăng nhập</button>
         </form>
         <form id="login-form-parent" class="login-form hidden">
@@ -401,8 +402,86 @@
           <input type="text" id="student-username" name="student-username" required>
           <label for="student-password">Mật khẩu</label>
           <input type="password" id="student-password" name="student-password" required>
+          <a href="#" class="forgot-password-link" id="forgot-password-student">Quên mật khẩu?</a>
           <button type="submit">Đăng nhập</button>
         </form>
+      </div>
+    </div>
+
+    <!-- Forgot Password Popup -->
+    <div id="forgot-password-popup" class="forgot-password-popup hidden">
+      <div class="forgot-password-content">
+        <span class="close-btn" id="close-forgot-password">&times;</span>
+        <h2>Quên mật khẩu</h2>
+        
+        <!-- Step 1: Enter Username -->
+        <div id="forgot-password-step1" class="forgot-password-step">
+          <p>Vui lòng nhập tên tài khoản của bạn để bắt đầu quá trình khôi phục mật khẩu.</p>
+          <form id="forgot-password-form-step1" class="forgot-password-form">
+            <input type="text" id="forgot-username" name="forgot-username" placeholder="Nhập tên tài khoản" required>
+            <button type="submit">Tiếp tục</button>
+          </form>
+        </div>
+
+        <!-- Step 2: Verification Code -->
+        <div id="forgot-password-step2" class="forgot-password-step hidden">
+          <p>Mã xác thực đã được gửi đến email của bạn. Vui lòng nhập mã để tiếp tục.</p>
+          <form id="forgot-password-form-step2" class="forgot-password-form">
+            <div class="verification-code-inputs">
+              <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+              <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+              <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+              <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+              <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+              <input type="text" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+            </div>
+            <div class="verification-timer">
+              <span>Mã xác thực sẽ hết hạn sau: </span>
+              <span id="verification-timer">05:00</span>
+            </div>
+            <button type="submit">Xác nhận</button>
+            <button type="button" id="resend-code" class="resend-code-btn">Gửi lại mã</button>
+          </form>
+        </div>
+
+        <!-- Step 3: New Password -->
+        <div id="forgot-password-step3" class="forgot-password-step hidden">
+          <p>Vui lòng nhập mật khẩu mới cho tài khoản của bạn.</p>
+          <form id="forgot-password-form-step3" class="forgot-password-form">
+            <div class="password-input-group">
+              <input type="password" id="new-password" name="new-password" placeholder="Mật khẩu mới" required>
+              <div class="password-strength-meter">
+                <div class="strength-bar"></div>
+              </div>
+              <div class="password-requirements">
+                <p>Mật khẩu phải có:</p>
+                <ul>
+                  <li data-requirement="length">Ít nhất 8 ký tự</li>
+                  <li data-requirement="uppercase">Ít nhất 1 chữ hoa</li>
+                  <li data-requirement="lowercase">Ít nhất 1 chữ thường</li>
+                  <li data-requirement="number">Ít nhất 1 số</li>
+                  <li data-requirement="special">Ít nhất 1 ký tự đặc biệt</li>
+                </ul>
+              </div>
+            </div>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Xác nhận mật khẩu mới" required>
+            <button type="submit">Đặt lại mật khẩu</button>
+          </form>
+        </div>
+
+        <!-- Step 4: Success Message -->
+        <div id="forgot-password-step4" class="forgot-password-step hidden">
+          <div class="success-message">
+            <i class="fas fa-check-circle"></i>
+            <h3>Đặt lại mật khẩu thành công!</h3>
+            <p>Mật khẩu của bạn đã được cập nhật. Bạn có thể đăng nhập bằng mật khẩu mới.</p>
+            <button type="button" id="back-to-login" class="back-to-login-btn">Đăng nhập ngay</button>
+          </div>
+        </div>
+
+        <div class="back-to-login">
+          <a href="#" id="back-to-login-link">Quay lại đăng nhập</a>
+        </div>
       </div>
     </div>
 

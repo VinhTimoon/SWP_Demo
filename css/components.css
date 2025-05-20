@@ -128,6 +128,117 @@
     display: none;
 }
 
+.forgot-password-link {
+    display: block;
+    text-align: right;
+    color: #0f3c78;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: -4px;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+}
+
+.forgot-password-link:hover {
+    color: #f79a3e;
+    text-decoration: underline;
+}
+
+/* Forgot Password Popup */
+.forgot-password-popup {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2100;
+}
+
+.forgot-password-popup.hidden {
+    display: none;
+}
+
+.forgot-password-content {
+    background: #fff;
+    padding: 32px 24px 24px 24px;
+    border-radius: 12px;
+    min-width: 320px;
+    max-width: 95vw;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.forgot-password-content h2 {
+    margin-bottom: 20px;
+    color: #0f3c78;
+    font-size: 1.5rem;
+}
+
+.forgot-password-content p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.forgot-password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.forgot-password-form input {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.forgot-password-form button {
+    background: #f79a3e;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.forgot-password-form button:hover {
+    background: #e58a2e;
+}
+
+.forgot-password-form .back-to-login {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.forgot-password-form .back-to-login a {
+    color: #0f3c78;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.forgot-password-form .back-to-login a:hover {
+    color: #f79a3e;
+    text-decoration: underline;
+}
+
+.forgot-password-content .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+}
+
+.forgot-password-content .close-btn:hover {
+    color: #f79a3e;
+}
+
 /* Chatbot */
 .chatbot {
     position: fixed;

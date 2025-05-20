@@ -243,6 +243,7 @@
           <input type="text" id="manager-username" name="manager-username" required>
           <label for="manager-password">Mật khẩu</label>
           <input type="password" id="manager-password" name="manager-password" required>
+          <a href="#" class="forgot-password-link" id="forgot-password-manager">Quên mật khẩu?</a>
           <button type="submit">Đăng nhập</button>
         </form>
         <form id="login-form-parent" class="login-form hidden">
@@ -255,7 +256,24 @@
           <input type="text" id="student-username" name="student-username" required>
           <label for="student-password">Mật khẩu</label>
           <input type="password" id="student-password" name="student-password" required>
+          <a href="#" class="forgot-password-link" id="forgot-password-student">Quên mật khẩu?</a>
           <button type="submit">Đăng nhập</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Forgot Password Popup -->
+    <div id="forgot-password-popup" class="forgot-password-popup hidden">
+      <div class="forgot-password-content">
+        <span class="close-btn" id="close-forgot-password">&times;</span>
+        <h2>Quên mật khẩu</h2>
+        <p>Vui lòng nhập tên tài khoản của bạn. Chúng tôi sẽ gửi hướng dẫn khôi phục mật khẩu qua email đã đăng ký.</p>
+        <form id="forgot-password-form" class="forgot-password-form">
+          <input type="text" id="forgot-username" name="forgot-username" placeholder="Nhập tên tài khoản" required>
+          <button type="submit">Gửi yêu cầu</button>
+          <div class="back-to-login">
+            <a href="#" id="back-to-login">Quay lại đăng nhập</a>
+          </div>
         </form>
       </div>
     </div>
